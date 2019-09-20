@@ -48,7 +48,7 @@
     },
     localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
     path: '',
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"swoopIn","post_body":"swoopIn","coll_header":"swoopIn","sidebar":"swoopIn"}},
     translation: {
       copy_button: 'Copy',
       copy_success: 'Copied',
@@ -244,6 +244,7 @@
     <i class="fa fa-arrow-up"></i>
     <span>0%</span>
   </div>
+  <div class="reading-progress-bar"></div>
 
 
     <main id="main" class="main">
@@ -440,33 +441,12 @@
 	
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
-</script>
-<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Bingo</span>
 </div>
-
-<!--
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0</div>
-  <span class="post-meta-divider">|</span>
-  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.0</div>
--->
-
-<div class="powered-by">
-<i class="fa fa-user-md"></i>
-<span id="busuanzi_container_site_uv">
-  本站总访客数:<span id="busuanzi_value_site_uv"></span>&nbsp;&nbsp;| 
-</span>
-<span id="busuanzi_container_site_pv">
-    &nbsp;本站总访问量<span id="busuanzi_value_site_pv"></span>次
-</span>
-</div>
-</div>
- 
-
         
 <div class="busuanzi-count">
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
