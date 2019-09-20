@@ -1666,56 +1666,12 @@ article:last-child .post-eof {
 #qr p {
   text-align: center;
 }
-.my_post_copyright {
-  width: 85%;
-  max-width: 45em;
-  margin: 2.8em auto 0;
+.post-copyright {
+  background-color: #f9f9f9;
+  border-left: 3px solid #ff1700;
+  list-style: none;
+  margin: 2em 0 0;
   padding: 0.5em 1em;
-  border: 1px solid #d3d3d3;
-  font-size: 0.93rem;
-  line-height: 1.6em;
-  word-break: break-all;
-  background: rgba(255,255,255,0.4);
-}
-.my_post_copyright p {
-  margin: 0;
-}
-.my_post_copyright span {
-  display: inline-block;
-  width: 5.2em;
-  color: #b5b5b5;
-  font-weight: bold;
-}
-.my_post_copyright .raw {
-  margin-left: 1em;
-  width: 5em;
-}
-.my_post_copyright a {
-  color: #808080;
-  border-bottom: 0;
-}
-.my_post_copyright a:hover {
-  color: #a3d2a3;
-  text-decoration: underline;
-}
-.my_post_copyright:hover .fa-clipboard {
-  color: #000;
-}
-.my_post_copyright .post-url:hover {
-  font-weight: normal;
-}
-.my_post_copyright .copy-path {
-  margin-left: 1em;
-  width: 1em;
-}
-@media (max-width: 767px) {
-  .my_post_copyright .copy-path {
-    display: none;
-  }
-}
-.my_post_copyright .copy-path:hover {
-  color: #808080;
-  cursor: pointer;
 }
 .sidebar {
   background: #222;
@@ -1806,7 +1762,7 @@ article:last-child .post-eof {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #36ff9e;
+  background: #79ffff;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -1984,11 +1940,10 @@ article:last-child .post-eof {
 .post-toc .nav-item {
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
   line-height: 1.8;
 }
 .post-toc .nav .nav-child {
-  display: none;
+  display: block;
 }
 .post-toc .nav .active > .nav-child {
   display: block;
@@ -2055,6 +2010,9 @@ article:last-child .post-eof {
 .footer-inner {
   text-align: center;
 }
+#animate {
+  animation: iconAnimate 1.33s ease-in-out infinite;
+}
 .with-love {
   color: #808080;
   display: inline-block;
@@ -2119,6 +2077,14 @@ article:last-child .post-eof {
   50%, 70% {
     transform: scale(1.1);
   }
+}
+.gt-header a,
+.gt-comments a,
+.gt-popup a {
+  border-bottom: none;
+}
+.gt-container .gt-popup .gt-action.is--active::before {
+  top: 0.7em;
 }
 .search-pop-overlay {
   background-color: rgba(0,0,0,0.3);

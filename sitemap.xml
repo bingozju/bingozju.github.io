@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://bingozju.github.io/tags/index.html</loc>
+    <loc>https://bingozju.github.io/2019/09/20/find-in-sorted-array/</loc>
     
-    <lastmod>2019-09-17T07:22:14.847Z</lastmod>
+    <lastmod>2019-09-20T03:44:26.605Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://bingozju.github.io/categories/index.html</loc>
     
-    <lastmod>2019-09-17T07:21:54.438Z</lastmod>
+    <lastmod>2019-09-18T02:25:57.182Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://bingozju.github.io/tags/index.html</loc>
+    
+    <lastmod>2019-09-18T02:25:41.703Z</lastmod>
     
   </url>
   
