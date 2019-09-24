@@ -66,12 +66,10 @@
 <meta property="og:site_name" content="Bingo&#39;s blog">
 <meta property="og:description" content="3D Graph Neural Networks for RGBD Semantic Segmentation简介2017年ICCV的论文，地址在次 。 文章提出一个应用于3D数据集（RGB-D）的图神经网络（3DGNN），在3D点云数据上构建一个K最邻近图。图中每个节点对应一个像素点，并与K个点相关联。每个点上有一个表征向量，这个向量由其设计的一个叫做unary CNN的网络从2D图像中初始化。">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="k:%5Cgit_project%5Cmyblog%5Csource%5Cimg%5Cgnn_1.jpg">
-<meta property="og:updated_time" content="2019-09-24T14:01:26.986Z">
+<meta property="og:updated_time" content="2019-09-24T14:42:18.484Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【论文整理】图神经网络3D分割">
 <meta name="twitter:description" content="3D Graph Neural Networks for RGBD Semantic Segmentation简介2017年ICCV的论文，地址在次 。 文章提出一个应用于3D数据集（RGB-D）的图神经网络（3DGNN），在3D点云数据上构建一个K最邻近图。图中每个节点对应一个像素点，并与K个点相关联。每个点上有一个表征向量，这个向量由其设计的一个叫做unary CNN的网络从2D图像中初始化。">
-<meta name="twitter:image" content="k:%5Cgit_project%5Cmyblog%5Csource%5Cimg%5Cgnn_1.jpg">
   <link rel="canonical" href="https://bingozju.github.io/2019/09/24/3d-GNN-RGBD-semantic-segmentation/">
 
 
@@ -291,7 +289,7 @@
                 
               
 
-              <time title="Created: 2019-09-24 21:47:19 / Modified: 22:01:26" itemprop="dateCreated datePublished" datetime="2019-09-24T21:47:19+08:00">2019-09-24</time>
+              <time title="Created: 2019-09-24 21:47:19 / Modified: 22:42:18" itemprop="dateCreated datePublished" datetime="2019-09-24T21:47:19+08:00">2019-09-24</time>
             </span>
           
             
@@ -334,9 +332,8 @@
         <h3 id="3D-Graph-Neural-Networks-for-RGBD-Semantic-Segmentation"><a href="#3D-Graph-Neural-Networks-for-RGBD-Semantic-Segmentation" class="headerlink" title="3D Graph Neural Networks for RGBD Semantic Segmentation"></a>3D Graph Neural Networks for RGBD Semantic Segmentation</h3><h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>2017年ICCV的论文，<a href="http://openaccess.thecvf.com/content_iccv_2017/html/Qi_3D_Graph_Neural_ICCV_2017_paper.html" target="_blank" rel="noopener">地址在次</a> 。 </p><p>文章提出一个应用于3D数据集（RGB-D）的图神经网络（3DGNN），在3D点云数据上构建一个K最邻近图。图中每个节点对应一个像素点，并与K个点相关联。每个点上有一个表征向量，这个向量由其设计的一个叫做<em>unary CNN</em>的网络从2D图像中初始化。多次更新图网络，综合全部节点信息，根据时间的推移传播模型，使每个节点都对应预测一个语义分类。论文在<em>NYUD2</em>和<em>SUN-RGBD</em>数据集验证其有效性。</p><a id="more"></a>
 
 <h4 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h4><h5 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理"></a>数据处理</h5><p>众所周知RBG-D的数据说是3D，其数据量并不比一般的2D图像大多少，只是多了一个D信息，类似于多一个通道的2D图像。论文的处理方法博主认为似乎不是很精妙。直接应用小孔相机坐标系，把$x,y,z$拍平到$u,v$上。公式:<br>$$<br>\begin{equation}<br>x = (u - c_x)\frac{z} {f_x}\\<br>y = (v - c_y)\frac{z}{f_y}<br>\end{equation}<br>$$<br>拍平之后就建图。把每个像素点看作一个图节点，用KNN求出领域点并作边。这里需要注意的是边的关系是单向的，节点$A$到$B$有边不代表$B$到$A$也有边，如果定义箭头方向是信息流动方向，那么$B$可以收集$A$的特征，反之不然。</p>
-<h5 id="Unary-CNN"><a href="#Unary-CNN" class="headerlink" title="Unary CNN"></a>Unary CNN</h5><p>论文说这是一个修改版的<em>VGG-16</em>，其中使用了空洞卷积来增大感受野。这个网络的结果加上对FC之前的中间结果作<em>global polling</em>得到的一个$H \times M \times 2C$的<em>feature map</em>，作为节点的初始表征向量。</p>
-<h5 id="图神经网络"><a href="#图神经网络" class="headerlink" title="图神经网络"></a>图神经网络</h5><p><img src="K:%5Cgit_project%5Cmyblog%5Csource%5Cimg%5Cgnn_1.jpg" alt="gnn_1"></p>
-<p>图神经网络是一个动态的模型，每个节点的表征向量都随着时间（iter）的推进而更新。文章给出更新公式：</p>
+<h5 id="Unary-CNN"><a href="#Unary-CNN" class="headerlink" title="Unary CNN"></a>Unary CNN</h5><p>论文说这是一个修改版的<em>VGG-16</em>，其中使用了空洞卷积来增大感受野，降低参数量。这个网络的结果加上对FC之前的中间结果作<em>global polling</em>得到的一个$H \times M \times 2C$的<em>feature map</em>，作为节点的初始表征向量。</p>
+<h5 id="图神经网络"><a href="#图神经网络" class="headerlink" title="图神经网络"></a>图神经网络</h5><p>图神经网络是一个动态的模型，每个节点的表征向量都随着时间（iter）的推进而更新。文章给出更新公式：</p>
 <p>$$<br>\begin{equation}<br>m_v^t = M({h_{\mu}^t|\mu\in\Omega_v})\\<br>h_v^{t+1} = F(h_t^t,m_v^t)<br>\end{equation}<br>$$<br>这里，$M,F$分别为计算领域信息和更新隐藏层表征向量的函数。$m_v^t$表示$v$从领域节点整合的信息。文章中给出$F$的两种方案，<em>Vanilla RNN Update</em>和<em>LSTM Update</em>，并说明<em>LSTM Update</em>有更好的效果，因为其记忆功能提供了更多的信息量。而$M$函数为$m_v^t=\frac{1}{|\Omega_v|}\sum{g(h_v^t)}$，这里$g$是多层感知机（MLP）。</p>
 <h5 id="预测模型"><a href="#预测模型" class="headerlink" title="预测模型"></a>预测模型</h5><p>经过上面一系列操作，最后输出$h_v^t$就是节点$v$的表征向量，预测其语义类别$y_v$公式：<br>$$<br>p_{y_v}=s([h_v^t ,h_v^0])<br>$$<br>这里论文说$s$还是一个多层感知机，而且使用了softmax激活函数。然后论文说它辛苦搞的Unary CNN在一开始提取的向量颇有2D信息量，不能浪费，于是两个混在一起来训练。损失函数使用交叉熵（ cross-entropy<br>loss function），训练方式使用时序反向传播算法（back-propagation through time）。</p>
 <h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>首先就RBGD的拍平处理方式来说，可以说是数据降维的处理方式。降维是为了简化模型，降低参数量。而文章使用的模型复杂度确实不小，比如图神经网络节点很多，其深度就很深，还有各种残差法的使用。但是从数据本身来说，其D信息恰恰应该是最有信息量的，直接拍平融合到$x,y$中训练，博主认为这个处理方式不是很精妙，有点像是因为模型复杂参数太多才被迫使用的处理方法。</p>
@@ -652,7 +649,7 @@
       repo: 'bingozju.github.io',
       owner: 'bingozju',
       admin: ['bingozju'],
-      id: 'f47af1d1eda4d807b02bba32be15120b',
+      id: 'a676607444a8bc8b150c9a3aff884e61',
         language: window.navigator.language || window.navigator.userLanguage,
       
       distractionFreeMode: 'true'
@@ -737,7 +734,11 @@
     });
     gitalk.render('gitalk-container');
   }, window.Gitalk);
-</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+</script>
+
+  
+  
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config("");
 </script>
@@ -754,9 +755,5 @@
 <script type="text/javascript" src="custom_mathjax_source">
 </script>
 <!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
-
-  
-  
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+<!-- hexo-inject:end --></body>
 </html>
