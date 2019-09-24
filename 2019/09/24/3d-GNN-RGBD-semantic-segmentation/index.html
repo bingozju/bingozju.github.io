@@ -66,7 +66,7 @@
 <meta property="og:site_name" content="Bingo&#39;s blog">
 <meta property="og:description" content="3D Graph Neural Networks for RGBD Semantic Segmentation简介2017年ICCV的论文，地址在次 。 文章提出一个应用于3D数据集（RGB-D）的图神经网络（3DGNN），在3D点云数据上构建一个K最邻近图。图中每个节点对应一个像素点，并与K个点相关联。每个点上有一个表征向量，这个向量由其设计的一个叫做unary CNN的网络从2D图像中初始化。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-24T14:42:18.484Z">
+<meta property="og:updated_time" content="2019-09-24T14:55:43.845Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【论文整理】图神经网络3D分割">
 <meta name="twitter:description" content="3D Graph Neural Networks for RGBD Semantic Segmentation简介2017年ICCV的论文，地址在次 。 文章提出一个应用于3D数据集（RGB-D）的图神经网络（3DGNN），在3D点云数据上构建一个K最邻近图。图中每个节点对应一个像素点，并与K个点相关联。每个点上有一个表征向量，这个向量由其设计的一个叫做unary CNN的网络从2D图像中初始化。">
@@ -289,7 +289,7 @@
                 
               
 
-              <time title="Created: 2019-09-24 21:47:19 / Modified: 22:42:18" itemprop="dateCreated datePublished" datetime="2019-09-24T21:47:19+08:00">2019-09-24</time>
+              <time title="Created: 2019-09-24 21:47:19 / Modified: 22:55:43" itemprop="dateCreated datePublished" datetime="2019-09-24T21:47:19+08:00">2019-09-24</time>
             </span>
           
             
@@ -337,7 +337,7 @@
 <p>$$<br>\begin{equation}<br>m_v^t = M({h_{\mu}^t|\mu\in\Omega_v})\\<br>h_v^{t+1} = F(h_t^t,m_v^t)<br>\end{equation}<br>$$<br>这里，$M,F$分别为计算领域信息和更新隐藏层表征向量的函数。$m_v^t$表示$v$从领域节点整合的信息。文章中给出$F$的两种方案，<em>Vanilla RNN Update</em>和<em>LSTM Update</em>，并说明<em>LSTM Update</em>有更好的效果，因为其记忆功能提供了更多的信息量。而$M$函数为$m_v^t=\frac{1}{|\Omega_v|}\sum{g(h_v^t)}$，这里$g$是多层感知机（MLP）。</p>
 <h5 id="预测模型"><a href="#预测模型" class="headerlink" title="预测模型"></a>预测模型</h5><p>经过上面一系列操作，最后输出$h_v^t$就是节点$v$的表征向量，预测其语义类别$y_v$公式：<br>$$<br>p_{y_v}=s([h_v^t ,h_v^0])<br>$$<br>这里论文说$s$还是一个多层感知机，而且使用了softmax激活函数。然后论文说它辛苦搞的Unary CNN在一开始提取的向量颇有2D信息量，不能浪费，于是两个混在一起来训练。损失函数使用交叉熵（ cross-entropy<br>loss function），训练方式使用时序反向传播算法（back-propagation through time）。</p>
 <h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>首先就RBGD的拍平处理方式来说，可以说是数据降维的处理方式。降维是为了简化模型，降低参数量。而文章使用的模型复杂度确实不小，比如图神经网络节点很多，其深度就很深，还有各种残差法的使用。但是从数据本身来说，其D信息恰恰应该是最有信息量的，直接拍平融合到$x,y$中训练，博主认为这个处理方式不是很精妙，有点像是因为模型复杂参数太多才被迫使用的处理方法。</p>
-<p>其次是图神经网络的优势是可以抽象地处理非欧空间的信息。这里其实还是把它当作是欧氏空间来应用，私以为有启发的地方在于这里在拍平之后用KNN寻找领域，就类似于一个变形的模板了，但是说回来感觉其他的CNN深度网络加上D的通道一起训练可能应该也许大概也不会太差。</p>
+<p>其次是图神经网络的优势是可以抽象地处理非欧空间的信息。这里其实还是把它当作是欧氏空间来应用，私以为有启发的地方在于这里在拍平之后用KNN寻找领域，就类似于一个变形的模板了。</p>
 <p>抛砖至此，引玉来评。</p>
 
     </div>
