@@ -58,19 +58,21 @@
   };
 </script>
 
-  <meta name="description" content="惟江上之清风，与山间之明月，耳得之而为声，目遇之而成色，取之无禁，用之不竭。">
-<meta name="keywords" content="算法,机器学习,深度学习,计算机视觉,计算机图形学">
-<meta property="og:type" content="website">
-<meta property="og:title" content="标签页">
-<meta property="og:url" content="https://bingozju.github.io/tags/index.html">
+  <meta name="description" content="3D Graph Neural Networks for RGBD Semantic Segmentation简介2017年ICCV的论文，地址在次 。 文章提出一个应用于3D数据集（RGB-D）的图神经网络（3DGNN），在3D点云数据上构建一个K最邻近图。图中每个节点对应一个像素点，并与K个点相关联。每个点上有一个表征向量，这个向量由其设计的一个叫做unary CNN的网络从2D图像中初始化。">
+<meta name="keywords" content="深度学习,3D图像分割,图神经网络">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【论文整理】图神经网络3D分割">
+<meta property="og:url" content="https://bingozju.github.io/2019/09/24/3d-GNN-RGBD-semantic-segmentation/index.html">
 <meta property="og:site_name" content="Bingo&#39;s blog">
-<meta property="og:description" content="惟江上之清风，与山间之明月，耳得之而为声，目遇之而成色，取之无禁，用之不竭。">
+<meta property="og:description" content="3D Graph Neural Networks for RGBD Semantic Segmentation简介2017年ICCV的论文，地址在次 。 文章提出一个应用于3D数据集（RGB-D）的图神经网络（3DGNN），在3D点云数据上构建一个K最邻近图。图中每个节点对应一个像素点，并与K个点相关联。每个点上有一个表征向量，这个向量由其设计的一个叫做unary CNN的网络从2D图像中初始化。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-18T02:25:41.703Z">
+<meta property="og:image" content="k:%5Cgit_project%5Cmyblog%5Csource%5Cimg%5Cgnn_1.jpg">
+<meta property="og:updated_time" content="2019-09-24T13:47:19.414Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="标签页">
-<meta name="twitter:description" content="惟江上之清风，与山间之明月，耳得之而为声，目遇之而成色，取之无禁，用之不竭。">
-  <link rel="canonical" href="https://bingozju.github.io/tags/">
+<meta name="twitter:title" content="【论文整理】图神经网络3D分割">
+<meta name="twitter:description" content="3D Graph Neural Networks for RGBD Semantic Segmentation简介2017年ICCV的论文，地址在次 。 文章提出一个应用于3D数据集（RGB-D）的图神经网络（3DGNN），在3D点云数据上构建一个K最邻近图。图中每个节点对应一个像素点，并与K个点相关联。每个点上有一个表征向量，这个向量由其设计的一个叫做unary CNN的网络从2D图像中初始化。">
+<meta name="twitter:image" content="k:%5Cgit_project%5Cmyblog%5Csource%5Cimg%5Cgnn_1.jpg">
+  <link rel="canonical" href="https://bingozju.github.io/2019/09/24/3d-GNN-RGBD-semantic-segmentation/">
 
 
 <script id="page-configurations">
@@ -78,13 +80,13 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false,
-    isPage: true,
+    isPost: true,
+    isPage: false,
     isArchive: false
   };
 </script>
 
-  <title>标签页 | Bingo's blog</title>
+  <title>【论文整理】图神经网络3D分割 | Bingo's blog</title>
   
 
 
@@ -252,74 +254,179 @@
         <div class="content-wrap">
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
           <div id="content" class="content">
             
 
   <div id="posts" class="posts-expand">
-    
-    
-    
-    <div class="post-block page">
-      <header class="post-header">
-
-<h1 class="post-title" itemprop="name headline">标签页
-
-</h1>
-
-<div class="post-meta">
+      <article itemscope itemtype="http://schema.org/Article">
   
+  
+  
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="https://bingozju.github.io/2019/09/24/3d-GNN-RGBD-semantic-segmentation/">
 
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bingo">
+      <meta itemprop="description" content="惟江上之清风，与山间之明月，耳得之而为声，目遇之而成色，取之无禁，用之不竭。">
+      <meta itemprop="image" content="/images/me.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Bingo's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">【论文整理】图神经网络3D分割
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2019-09-24 21:47:19" itemprop="dateCreated datePublished" datetime="2019-09-24T21:47:19+08:00">2019-09-24</time>
+            </span>
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/论文笔记/" itemprop="url" rel="index"><span itemprop="name">论文笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="3D-Graph-Neural-Networks-for-RGBD-Semantic-Segmentation"><a href="#3D-Graph-Neural-Networks-for-RGBD-Semantic-Segmentation" class="headerlink" title="3D Graph Neural Networks for RGBD Semantic Segmentation"></a>3D Graph Neural Networks for RGBD Semantic Segmentation</h3><h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>2017年ICCV的论文，<a href="http://openaccess.thecvf.com/content_iccv_2017/html/Qi_3D_Graph_Neural_ICCV_2017_paper.html" target="_blank" rel="noopener">地址在次</a> 。 </p><p>文章提出一个应用于3D数据集（RGB-D）的图神经网络（3DGNN），在3D点云数据上构建一个K最邻近图。图中每个节点对应一个像素点，并与K个点相关联。每个点上有一个表征向量，这个向量由其设计的一个叫做<em>unary CNN</em>的网络从2D图像中初始化。多次更新图网络，综合全部节点信息，根据时间的推移传播模型，使每个节点都对应预测一个语义分类。论文在<em>NYUD2</em>和<em>SUN-RGBD</em>数据集验证其有效性。</p><a id="more"></a>
+
+<h4 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h4><h5 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理"></a>数据处理</h5><p>众所周知RBG-D的数据说是3D，其数据量并不比一般的2D图像大多少，只是多了一个D信息，类似于多一个通道的2D图像。论文的处理方法博主认为似乎不是很精妙。直接应用小孔相机坐标系，把$x,y,z$拍平到$u,v$上。公式:<br>$$<br>x = (u-c_x)<em>z/f_x\<br>y=(v-c_y)</em>z/f_y<br>$$<br>拍平之后就建图。把每个像素点看作一个图节点，用KNN求出领域点并作边。这里需要注意的是边的关系是单向的，节点$A$到$B$有边不代表$B$到$A$也有边，如果定义箭头方向是信息流动方向，那么$B$可以收集$A$的特征，反之不然。</p>
+<h5 id="Unary-CNN"><a href="#Unary-CNN" class="headerlink" title="Unary CNN"></a>Unary CNN</h5><p>论文说这是一个修改版的<em>VGG-16</em>，其中使用了空洞卷积来增大感受野。这个网络的结果加上对FC之前的中间结果作<em>global polling</em>得到的一个$H \times M * 2C$的<em>feature map</em>，作为节点的初始表征向量。</p>
+<h5 id="图神经网络"><a href="#图神经网络" class="headerlink" title="图神经网络"></a>图神经网络</h5><p><img src="K:%5Cgit_project%5Cmyblog%5Csource%5Cimg%5Cgnn_1.jpg" alt="gnn_1"></p>
+<p>图神经网络是一个动态的模型，每个节点的表征向量都随着时间（iter）的推进而更新。文章给出更新公式：<br>$$<br>m_v^t = M({h_{\mu}^t|\mu\in\Omega_v})\<br>h_v^{t+1} = F(h_t^t,m_v^t)<br>$$<br>这里，$M,F$分别为计算领域信息和更新隐藏层表征向量的函数。$m_v^t$表示$v$从领域节点整合的信息。文章中给出$F$的两种方案，<em>Vanilla RNN Update</em>和<em>LSTM Update</em>，并说明<em>LSTM Update</em>有更好的效果，因为其记忆功能提供了更多的信息量。而$M$函数为$m_v^t=\frac{1}{|\Omega_v|}\sum{g(h_v^t)}$，这里$g$是多层感知机（MLP）。</p>
+<h5 id="预测模型"><a href="#预测模型" class="headerlink" title="预测模型"></a>预测模型</h5><p>经过上面一系列操作，最后输出$h_v^t$就是节点$v$的表征向量，预测其语义类别$y_v$公式：<br>$$<br>p_{y_v}=s([h_v^t ,h_v^0])<br>$$<br>这里论文说$s$还是一个多层感知机，而且使用了softmax激活函数。然后论文说它辛苦搞的Unary CNN在一开始提取的向量颇有2D信息量，不能浪费，于是两个混在一起来训练。损失函数使用交叉熵（ cross-entropy<br>loss function），训练方式使用时序反向传播算法（back-propagation through time）。</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>首先就RBGD的拍平处理方式来说，可以说是数据降维的处理方式。降维是为了简化模型，降低参数量。而文章使用的模型复杂度确实不小，比如图神经网络节点很多，其深度就很深，还有各种残差法的使用。但是从数据本身来说，其D信息恰恰应该是最有信息量的，直接拍平融合到$x,y$中训练，博主认为这个处理方式不是很精妙，有点像是因为模型复杂参数太多才被迫使用的处理方法。</p>
+<p>其次是图神经网络的优势是可以抽象地处理非欧空间的信息。这里其实还是把它当作是欧氏空间来应用，私以为有启发的地方在于这里在拍平之后用KNN寻找领域，就类似于一个变形的模板了，但是说回来感觉其他的CNN深度网络加上D的通道一起训练可能应该也许大概也不会太差。</p>
+<p>抛砖至此，引玉来评。</p>
+
+    </div>
+	
+	
+    
+    
+    
+        
+      
+        <div id="reward-container">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    Donate
+  </button>
+  <div id="qr" style="display: none;">
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/wechatpay.png" alt="Bingo WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/alipay.jpg" alt="Bingo Alipay">
+        <p>Alipay</p>
+      </div>
+
+  </div>
 </div>
 
-</header>
+      
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Bingo</li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="https://bingozju.github.io/2019/09/24/3d-GNN-RGBD-semantic-segmentation/" title="【论文整理】图神经网络3D分割">https://bingozju.github.io/2019/09/24/3d-GNN-RGBD-semantic-segmentation/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-cn" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.</li>
+</ul>
+</div>
 
       
-      
-      
-      <div class="post-body">
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/深度学习/" rel="tag"><i class="fa fa-tag"></i> 深度学习</a>
+            
+              <a href="/tags/3D图像分割/" rel="tag"><i class="fa fa-tag"></i> 3D图像分割</a>
+            
+              <a href="/tags/图神经网络/" rel="tag"><i class="fa fa-tag"></i> 图神经网络</a>
+            
+          </div>
         
-          <div class="tag-cloud">
-            <div class="tag-cloud-title">
-              6 tags in total
-            </div>
-            <div class="tag-cloud-tags">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
               
-                <a href="/tags/3D图像分割/" style="font-size: 12px; color: #ccc">3D图像分割</a> <a href="/tags/二分查找/" style="font-size: 12px; color: #ccc">二分查找</a> <a href="/tags/分治法/" style="font-size: 12px; color: #ccc">分治法</a> <a href="/tags/动态规划/" style="font-size: 12px; color: #ccc">动态规划</a> <a href="/tags/图神经网络/" style="font-size: 12px; color: #ccc">图神经网络</a> <a href="/tags/深度学习/" style="font-size: 12px; color: #ccc">深度学习</a>
+                <a href="/2019/09/23/geometric/" rel="next" title="【算法合集】几何">
+                  <i class="fa fa-chevron-left"></i> 【算法合集】几何
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
               
             </div>
           </div>
         
-      </div>
-      
-      
-      
-    </div>
+      </footer>
     
+  </div>
+  
+  
+  
+  </article>
 
-    
-    
-    
   </div>
 
 
@@ -360,6 +467,8 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#3D-Graph-Neural-Networks-for-RGBD-Semantic-Segmentation"><span class="nav-text">3D Graph Neural Networks for RGBD Semantic Segmentation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#简介"><span class="nav-text">简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#正文"><span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#数据处理"><span class="nav-text">数据处理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Unary-CNN"><span class="nav-text">Unary CNN</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#图神经网络"><span class="nav-text">图神经网络</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#预测模型"><span class="nav-text">预测模型</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-text">总结</span></a></li></ol></li></ol></div>
+        
       </div>
       <!--/noindex-->
 
@@ -551,6 +660,56 @@
   
 
   
+    
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
+  
 
   
 
@@ -566,7 +725,7 @@
       repo: 'bingozju.github.io',
       owner: 'bingozju',
       admin: ['bingozju'],
-      id: 'f47af1d1eda4d807b02bba32be15120b',
+      id: 'aa3421c05a33bca7f6375203fc5a72bd',
         language: window.navigator.language || window.navigator.userLanguage,
       
       distractionFreeMode: 'true'

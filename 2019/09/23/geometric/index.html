@@ -58,18 +58,18 @@
   };
 </script>
 
-  <meta name="description" content="Q1题目 Given n points on a 2D plane, find the maximum number of points that lie on the same straight line. Example12345678910Input: [[1,1],[2,2],[3,3]]Output: 3Explanation:^||        o|     o|  o  +----">
+  <meta name="description" content="求最多有多少个点在同一条直线上题目 Given n points on a 2D plane, find the maximum number of points that lie on the same straight line. Example12345678910Input: [[1,1],[2,2],[3,3]]Output: 3Explanation:^||        o|">
 <meta name="keywords" content="动态规划">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【算法合集】几何">
 <meta property="og:url" content="https://bingozju.github.io/2019/09/23/geometric/index.html">
 <meta property="og:site_name" content="Bingo&#39;s blog">
-<meta property="og:description" content="Q1题目 Given n points on a 2D plane, find the maximum number of points that lie on the same straight line. Example12345678910Input: [[1,1],[2,2],[3,3]]Output: 3Explanation:^||        o|     o|  o  +----">
+<meta property="og:description" content="求最多有多少个点在同一条直线上题目 Given n points on a 2D plane, find the maximum number of points that lie on the same straight line. Example12345678910Input: [[1,1],[2,2],[3,3]]Output: 3Explanation:^||        o|">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-23T01:52:41.061Z">
+<meta property="og:updated_time" content="2019-09-24T12:09:38.708Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【算法合集】几何">
-<meta name="twitter:description" content="Q1题目 Given n points on a 2D plane, find the maximum number of points that lie on the same straight line. Example12345678910Input: [[1,1],[2,2],[3,3]]Output: 3Explanation:^||        o|     o|  o  +----">
+<meta name="twitter:description" content="求最多有多少个点在同一条直线上题目 Given n points on a 2D plane, find the maximum number of points that lie on the same straight line. Example12345678910Input: [[1,1],[2,2],[3,3]]Output: 3Explanation:^||        o|">
   <link rel="canonical" href="https://bingozju.github.io/2019/09/23/geometric/">
 
 
@@ -289,11 +289,19 @@
                 
               
 
-              <time title="Created: 2019-09-23 09:36:49 / Modified: 09:52:41" itemprop="dateCreated datePublished" datetime="2019-09-23T09:36:49+08:00">2019-09-23</time>
+              <time title="Created: 2019-09-23 09:36:49" itemprop="dateCreated datePublished" datetime="2019-09-23T09:36:49+08:00">2019-09-23</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-09-24 20:09:38" itemprop="dateModified" datetime="2019-09-24T20:09:38+08:00">2019-09-24</time>
+              </span>
             
           
             <span class="post-meta-item">
@@ -329,18 +337,18 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="Q1"><a href="#Q1" class="headerlink" title="Q1"></a>Q1</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><blockquote>
+        <h3 id="求最多有多少个点在同一条直线上"><a href="#求最多有多少个点在同一条直线上" class="headerlink" title="求最多有多少个点在同一条直线上"></a>求最多有多少个点在同一条直线上</h3><h4 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h4><blockquote>
 <p>Given <em>n</em> points on a 2D plane, find the maximum number of points that lie on the same straight line.</p>
-</blockquote><h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Input: [[1,1],[2,2],[3,3]]</span><br><span class="line">Output: 3</span><br><span class="line">Explanation:</span><br><span class="line">^</span><br><span class="line">|</span><br><span class="line">|        o</span><br><span class="line">|     o</span><br><span class="line">|  o  </span><br><span class="line">+-------------&gt;</span><br><span class="line">0  1  2  3  4</span><br></pre></td></tr></table></figure><a id="more"></a>
+</blockquote><h4 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Input: [[1,1],[2,2],[3,3]]</span><br><span class="line">Output: 3</span><br><span class="line">Explanation:</span><br><span class="line">^</span><br><span class="line">|</span><br><span class="line">|        o</span><br><span class="line">|     o</span><br><span class="line">|  o  </span><br><span class="line">+-------------&gt;</span><br><span class="line">0  1  2  3  4</span><br></pre></td></tr></table></figure><a id="more"></a>
 
 
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Input: [[1,1],[3,2],[5,3],[4,1],[2,3],[1,4]]</span><br><span class="line">Output: 4</span><br><span class="line">Explanation:</span><br><span class="line">^</span><br><span class="line">|</span><br><span class="line">|  o</span><br><span class="line">|     o        o</span><br><span class="line">|        o</span><br><span class="line">|  o        o</span><br><span class="line">+-------------------&gt;</span><br><span class="line">0  1  2  3  4  5  6</span><br></pre></td></tr></table></figure>
 
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>计算多少个点在同一条直线上，可以转化为，一个向量上能经过多少个点，将向量移到坐标原点，问题又变成了多少个点有相同的斜率。所以现在思路就很明显了，在一个循环中分别将每个点作为坐标原点，然后在循环体内计算其他点与他的斜率，用动态规划来更新最大的点数:<br>$$<br>OPT[i] = MAX(points[i], OPT[i - 1])<br>$$</p>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>计算多少个点在同一条直线上，可以转化为，一个向量上能经过多少个点，将向量移到坐标原点，问题又变成了多少个点有相同的斜率。所以现在思路就很明显了，在一个循环中分别将每个点作为坐标原点，然后在循环体内计算其他点与他的斜率，用动态规划来更新最大的点数:<br>$$<br>OPT[i] = MAX(points[i], OPT[i - 1])<br>$$</p>
 <p>这里需要注意的是分母为零的情况，我的算法中处理为一个很小的小数（这里可能不够优雅，有非常小的概率会导致算法出错，可以考虑单独计数。但是我认为就算真的有这么一个点，那他和Y轴也是非常接近的，一般工程上也认为它等同于Y轴了）</p>
 <p>这里有同学可能会想到GCD的方法，事实上对每两个点求GCD是有重复的信息计算的。而直接作差（即假定坐标原点）就可以免去这些额外的计算。</p>
 <p>最后结果是：runtime 8 ms 95.15%, memory: 9.6 MB, 71.43%</p>
-<h3 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">maxPoints</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; points)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">int</span> ps = points.size();</span><br><span class="line">		<span class="keyword">if</span> (ps == <span class="number">0</span> || ps == <span class="number">1</span>)<span class="keyword">return</span> ps;</span><br><span class="line">		<span class="keyword">int</span> res_max = <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; ps; i++) &#123;</span><br><span class="line">			<span class="keyword">int</span> temp = <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">int</span> res_temp = <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">int</span> res = <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; ps; j++) &#123;</span><br><span class="line">				<span class="keyword">if</span> (points[j][<span class="number">1</span>] == points[i][<span class="number">1</span>] &amp;&amp; points[j][<span class="number">0</span>] == points[i][<span class="number">0</span>]) &#123;</span><br><span class="line">					temp++;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="built_in">vector</span>&lt;<span class="keyword">double</span>&gt; ks;</span><br><span class="line">			ks.resize(points.size() - temp + <span class="number">1</span>);</span><br><span class="line">			<span class="keyword">if</span> (ks.size() == <span class="number">0</span>)<span class="keyword">return</span> ps;</span><br><span class="line"></span><br><span class="line">			res = temp;</span><br><span class="line">			res_temp = temp;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>, k = <span class="number">0</span>; j &lt; points.size(); j++) &#123;</span><br><span class="line">				<span class="keyword">if</span> (points[j][<span class="number">0</span>] == points[i][<span class="number">0</span>] &amp;&amp; points[j][<span class="number">1</span>] == points[i][<span class="number">1</span>])</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">				<span class="keyword">if</span> (points[j][<span class="number">1</span>] == points[i][<span class="number">1</span>])ks[k++] -= <span class="number">1e-25</span>;</span><br><span class="line">				<span class="keyword">else</span> ks[k++] =  <span class="number">1.0</span> * (points[j][<span class="number">0</span>] - points[i][<span class="number">0</span>]) / (points[j][<span class="number">1</span>] - points[i][<span class="number">1</span>]);</span><br><span class="line">			&#125;</span><br><span class="line">			sort(ks.begin(), ks.end());</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; ks.size(); j++) &#123;</span><br><span class="line">				<span class="keyword">double</span> k_temp = ks[j - <span class="number">1</span>];</span><br><span class="line">				<span class="keyword">if</span> (ks[j] == k_temp) &#123;</span><br><span class="line">					res_temp++;</span><br><span class="line">					res = max(res, res_temp);</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">else</span> </span><br><span class="line">					res_temp = temp;</span><br><span class="line">			&#125;</span><br><span class="line">			res_max = max(res, res_max);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> res_max;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">maxPoints</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; points)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">int</span> ps = points.size();</span><br><span class="line">		<span class="keyword">if</span> (ps == <span class="number">0</span> || ps == <span class="number">1</span>)<span class="keyword">return</span> ps;</span><br><span class="line">		<span class="keyword">int</span> res_max = <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; ps; i++) &#123;</span><br><span class="line">			<span class="keyword">int</span> temp = <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">int</span> res_temp = <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">int</span> res = <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; ps; j++) &#123;</span><br><span class="line">				<span class="keyword">if</span> (points[j][<span class="number">1</span>] == points[i][<span class="number">1</span>] &amp;&amp; points[j][<span class="number">0</span>] == points[i][<span class="number">0</span>]) &#123;</span><br><span class="line">					temp++;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="built_in">vector</span>&lt;<span class="keyword">double</span>&gt; ks;</span><br><span class="line">			ks.resize(points.size() - temp + <span class="number">1</span>);</span><br><span class="line">			<span class="keyword">if</span> (ks.size() == <span class="number">0</span>)<span class="keyword">return</span> ps;</span><br><span class="line"></span><br><span class="line">			res = temp;</span><br><span class="line">			res_temp = temp;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>, k = <span class="number">0</span>; j &lt; points.size(); j++) &#123;</span><br><span class="line">				<span class="keyword">if</span> (points[j][<span class="number">0</span>] == points[i][<span class="number">0</span>] &amp;&amp; points[j][<span class="number">1</span>] == points[i][<span class="number">1</span>])</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">				<span class="keyword">if</span> (points[j][<span class="number">1</span>] == points[i][<span class="number">1</span>])ks[k++] -= <span class="number">1e-25</span>;</span><br><span class="line">				<span class="keyword">else</span> ks[k++] =  <span class="number">1.0</span> * (points[j][<span class="number">0</span>] - points[i][<span class="number">0</span>]) / (points[j][<span class="number">1</span>] - points[i][<span class="number">1</span>]);</span><br><span class="line">			&#125;</span><br><span class="line">			sort(ks.begin(), ks.end());</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; ks.size(); j++) &#123;</span><br><span class="line">				<span class="keyword">double</span> k_temp = ks[j - <span class="number">1</span>];</span><br><span class="line">				<span class="keyword">if</span> (ks[j] == k_temp) &#123;</span><br><span class="line">					res_temp++;</span><br><span class="line">					res = max(res, res_temp);</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">else</span> </span><br><span class="line">					res_temp = temp;</span><br><span class="line">			&#125;</span><br><span class="line">			res_max = max(res, res_max);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> res_max;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 
     </div>
@@ -417,6 +425,10 @@
 
             <div class="post-nav-prev post-nav-item">
               
+                <a href="/2019/09/24/3d-GNN-RGBD-semantic-segmentation/" rel="prev" title="【论文整理】图神经网络3D分割">
+                  【论文整理】图神经网络3D分割 <i class="fa fa-chevron-right"></i>
+                </a>
+              
             </div>
           </div>
         
@@ -468,7 +480,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Q1"><span class="nav-text">Q1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目"><span class="nav-text">题目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Example"><span class="nav-text">Example</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思路"><span class="nav-text">思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解答"><span class="nav-text">解答</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#求最多有多少个点在同一条直线上"><span class="nav-text">求最多有多少个点在同一条直线上</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目"><span class="nav-text">题目</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Example"><span class="nav-text">Example</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路"><span class="nav-text">思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解答"><span class="nav-text">解答</span></a></li></ol></li></ol></div>
         
       </div>
       <!--/noindex-->
@@ -486,7 +498,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -499,7 +511,7 @@
             <a href="/categories/">
           
         
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">categories</span>
         </a>
       </div>
@@ -512,7 +524,7 @@
             <a href="/tags/">
           
         
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">tags</span>
         </a>
       </div>
@@ -648,7 +660,7 @@
       repo: 'bingozju.github.io',
       owner: 'bingozju',
       admin: ['bingozju'],
-      id: 'a676607444a8bc8b150c9a3aff884e61',
+      id: 'f47af1d1eda4d807b02bba32be15120b',
         language: window.navigator.language || window.navigator.userLanguage,
       
       distractionFreeMode: 'true'
