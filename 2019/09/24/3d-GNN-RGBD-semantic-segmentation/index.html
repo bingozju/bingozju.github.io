@@ -58,18 +58,20 @@
   };
 </script>
 
-  <meta name="description" content="3D Graph Neural Networks for RGBD Semantic Segmentation简介2017年ICCV的论文，地址在次 。 文章提出一个应用于3D数据集（RGB-D）的图神经网络（3DGNN），在3D点云数据上构建一个K最邻近图。图中每个节点对应一个像素点，并与K个点相关联。每个点上有一个表征向量，这个向量由其设计的一个叫做unary CNN的网络从2D图像中初始化。">
+  <meta name="description" content="3D Graph Neural Networks for RGBD Semantic Segmentation简介2017年ICCV的论文，地址在次 。 文章提出一个应用于3D数据集（RGB-D）的图神经网络（3DGNN），在3D点云数据上构建一个K最邻近图。图中每个节点对应一个像素点，并与K个点相关联。每个点上有一个表征向量，这个向量由其设计的一个叫做 unary CNN 的网络从2D图像中初始">
 <meta name="keywords" content="深度学习,3D图像分割,图神经网络">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【论文整理】图神经网络3D分割">
 <meta property="og:url" content="https://bingozju.github.io/2019/09/24/3d-GNN-RGBD-semantic-segmentation/index.html">
 <meta property="og:site_name" content="Bingo&#39;s blog">
-<meta property="og:description" content="3D Graph Neural Networks for RGBD Semantic Segmentation简介2017年ICCV的论文，地址在次 。 文章提出一个应用于3D数据集（RGB-D）的图神经网络（3DGNN），在3D点云数据上构建一个K最邻近图。图中每个节点对应一个像素点，并与K个点相关联。每个点上有一个表征向量，这个向量由其设计的一个叫做unary CNN的网络从2D图像中初始化。">
+<meta property="og:description" content="3D Graph Neural Networks for RGBD Semantic Segmentation简介2017年ICCV的论文，地址在次 。 文章提出一个应用于3D数据集（RGB-D）的图神经网络（3DGNN），在3D点云数据上构建一个K最邻近图。图中每个节点对应一个像素点，并与K个点相关联。每个点上有一个表征向量，这个向量由其设计的一个叫做 unary CNN 的网络从2D图像中初始">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-24T14:55:43.845Z">
+<meta property="og:image" content="https://bingozju.github.io/2019/09/24/3d-GNN-RGBD-semantic-segmentation/DCGNN.JPG">
+<meta property="og:updated_time" content="2019-09-25T08:54:31.990Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【论文整理】图神经网络3D分割">
-<meta name="twitter:description" content="3D Graph Neural Networks for RGBD Semantic Segmentation简介2017年ICCV的论文，地址在次 。 文章提出一个应用于3D数据集（RGB-D）的图神经网络（3DGNN），在3D点云数据上构建一个K最邻近图。图中每个节点对应一个像素点，并与K个点相关联。每个点上有一个表征向量，这个向量由其设计的一个叫做unary CNN的网络从2D图像中初始化。">
+<meta name="twitter:description" content="3D Graph Neural Networks for RGBD Semantic Segmentation简介2017年ICCV的论文，地址在次 。 文章提出一个应用于3D数据集（RGB-D）的图神经网络（3DGNN），在3D点云数据上构建一个K最邻近图。图中每个节点对应一个像素点，并与K个点相关联。每个点上有一个表征向量，这个向量由其设计的一个叫做 unary CNN 的网络从2D图像中初始">
+<meta name="twitter:image" content="https://bingozju.github.io/2019/09/24/3d-GNN-RGBD-semantic-segmentation/DCGNN.JPG">
   <link rel="canonical" href="https://bingozju.github.io/2019/09/24/3d-GNN-RGBD-semantic-segmentation/">
 
 
@@ -289,11 +291,19 @@
                 
               
 
-              <time title="Created: 2019-09-24 21:47:19 / Modified: 22:55:43" itemprop="dateCreated datePublished" datetime="2019-09-24T21:47:19+08:00">2019-09-24</time>
+              <time title="Created: 2019-09-24 21:47:19" itemprop="dateCreated datePublished" datetime="2019-09-24T21:47:19+08:00">2019-09-24</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-09-25 16:54:31" itemprop="dateModified" datetime="2019-09-25T16:54:31+08:00">2019-09-25</time>
+              </span>
             
           
             <span class="post-meta-item">
@@ -329,17 +339,34 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="3D-Graph-Neural-Networks-for-RGBD-Semantic-Segmentation"><a href="#3D-Graph-Neural-Networks-for-RGBD-Semantic-Segmentation" class="headerlink" title="3D Graph Neural Networks for RGBD Semantic Segmentation"></a>3D Graph Neural Networks for RGBD Semantic Segmentation</h3><h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>2017年ICCV的论文，<a href="http://openaccess.thecvf.com/content_iccv_2017/html/Qi_3D_Graph_Neural_ICCV_2017_paper.html" target="_blank" rel="noopener">地址在次</a> 。 </p><p>文章提出一个应用于3D数据集（RGB-D）的图神经网络（3DGNN），在3D点云数据上构建一个K最邻近图。图中每个节点对应一个像素点，并与K个点相关联。每个点上有一个表征向量，这个向量由其设计的一个叫做<em>unary CNN</em>的网络从2D图像中初始化。多次更新图网络，综合全部节点信息，根据时间的推移传播模型，使每个节点都对应预测一个语义分类。论文在<em>NYUD2</em>和<em>SUN-RGBD</em>数据集验证其有效性。</p><a id="more"></a>
+        <h3 id="3D-Graph-Neural-Networks-for-RGBD-Semantic-Segmentation"><a href="#3D-Graph-Neural-Networks-for-RGBD-Semantic-Segmentation" class="headerlink" title="3D Graph Neural Networks for RGBD Semantic Segmentation"></a>3D Graph Neural Networks for RGBD Semantic Segmentation</h3><h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>2017年ICCV的论文，<a href="http://openaccess.thecvf.com/content_iccv_2017/html/Qi_3D_Graph_Neural_ICCV_2017_paper.html" target="_blank" rel="noopener">地址在次</a> 。 </p><p>文章提出一个应用于3D数据集（RGB-D）的图神经网络（3DGNN），在3D点云数据上构建一个K最邻近图。图中每个节点对应一个像素点，并与K个点相关联。每个点上有一个表征向量，这个向量由其设计的一个叫做 <em>unary CNN</em> 的网络从2D图像中初始化。多次更新图网络，综合全部节点信息，根据时间的推移传播模型，使每个节点都对应预测一个语义分类。论文在 <em>NYUD2</em> 和 <em>SUN-RGBD</em> 数据集验证其有效性。</p><a id="more"></a>
 
 <h4 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h4><h5 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理"></a>数据处理</h5><p>众所周知RBG-D的数据说是3D，其数据量并不比一般的2D图像大多少，只是多了一个D信息，类似于多一个通道的2D图像。论文的处理方法博主认为似乎不是很精妙。直接应用小孔相机坐标系，把$x,y,z$拍平到$u,v$上。公式:<br>$$<br>\begin{equation}<br>x = (u - c_x)\frac{z} {f_x}\\<br>y = (v - c_y)\frac{z}{f_y}<br>\end{equation}<br>$$<br>拍平之后就建图。把每个像素点看作一个图节点，用KNN求出领域点并作边。这里需要注意的是边的关系是单向的，节点$A$到$B$有边不代表$B$到$A$也有边，如果定义箭头方向是信息流动方向，那么$B$可以收集$A$的特征，反之不然。</p>
-<h5 id="Unary-CNN"><a href="#Unary-CNN" class="headerlink" title="Unary CNN"></a>Unary CNN</h5><p>论文说这是一个修改版的<em>VGG-16</em>，其中使用了空洞卷积来增大感受野，降低参数量。这个网络的结果加上对FC之前的中间结果作<em>global polling</em>得到的一个$H \times M \times 2C$的<em>feature map</em>，作为节点的初始表征向量。</p>
+<h5 id="Unary-CNN"><a href="#Unary-CNN" class="headerlink" title="Unary CNN"></a>Unary CNN</h5><p>论文说这是一个修改版的 <em>VGG-16</em> ，其中使用了空洞卷积来增大感受野，降低参数量。这个网络的结果加上对FC之前的中间结果作 <em>global polling</em> 得到的一个$H \times M \times 2C$的 <em>feature map</em> ，作为节点的初始表征向量。</p>
 <h5 id="图神经网络"><a href="#图神经网络" class="headerlink" title="图神经网络"></a>图神经网络</h5><p>图神经网络是一个动态的模型，每个节点的表征向量都随着时间（iter）的推进而更新。文章给出更新公式：</p>
-<p>$$<br>\begin{equation}<br>m_v^t = M({h_{\mu}^t|\mu\in\Omega_v})\\<br>h_v^{t+1} = F(h_t^t,m_v^t)<br>\end{equation}<br>$$<br>这里，$M,F$分别为计算领域信息和更新隐藏层表征向量的函数。$m_v^t$表示$v$从领域节点整合的信息。文章中给出$F$的两种方案，<em>Vanilla RNN Update</em>和<em>LSTM Update</em>，并说明<em>LSTM Update</em>有更好的效果，因为其记忆功能提供了更多的信息量。而$M$函数为$m_v^t=\frac{1}{|\Omega_v|}\sum{g(h_v^t)}$，这里$g$是多层感知机（MLP）。</p>
-<h5 id="预测模型"><a href="#预测模型" class="headerlink" title="预测模型"></a>预测模型</h5><p>经过上面一系列操作，最后输出$h_v^t$就是节点$v$的表征向量，预测其语义类别$y_v$公式：<br>$$<br>p_{y_v}=s([h_v^t ,h_v^0])<br>$$<br>这里论文说$s$还是一个多层感知机，而且使用了softmax激活函数。然后论文说它辛苦搞的Unary CNN在一开始提取的向量颇有2D信息量，不能浪费，于是两个混在一起来训练。损失函数使用交叉熵（ cross-entropy<br>loss function），训练方式使用时序反向传播算法（back-propagation through time）。</p>
-<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>首先就RBGD的拍平处理方式来说，可以说是数据降维的处理方式。降维是为了简化模型，降低参数量。而文章使用的模型复杂度确实不小，比如图神经网络节点很多，其深度就很深，还有各种残差法的使用。但是从数据本身来说，其D信息恰恰应该是最有信息量的，直接拍平融合到$x,y$中训练，博主认为这个处理方式不是很精妙，有点像是因为模型复杂参数太多才被迫使用的处理方法。</p>
+<p>$$<br>\begin{equation}<br>m_v^t = M({h_{\mu}^t|\mu\in\Omega_v})\\<br>h_v^{t+1} = F(h_t^t,m_v^t)<br>\end{equation}<br>$$<br>这里，$M,F$分别为计算领域信息和更新隐藏层表征向量的函数。$m_v^t$表示$v$从领域节点整合的信息。文章中给出$F$的两种方案，<em>Vanilla RNN Update</em> 和 <em>LSTM Update</em> ，并说明 <em>LSTM Update</em> 有更好的效果，因为其记忆功能提供了更多的信息量。而$M$函数为$m_v^t=\frac{1}{|\Omega_v|}\sum{g(h_v^t)}$，这里$g$是多层感知机（MLP）。</p>
+<h5 id="预测模型"><a href="#预测模型" class="headerlink" title="预测模型"></a>预测模型</h5><p>经过上面一系列操作，最后输出$h_v^t$就是节点$v$的表征向量，预测其语义类别$y_v$公式：<br>$$<br>p_{y_v}=s([h_v^t ,h_v^0])<br>$$<br>这里论文说$s$还是一个多层感知机，而且使用了 softmax 激活函数。然后论文说它辛苦搞的 Unary CNN 在一开始提取的向量颇有 2D 信息量，不能浪费，于是两个混在一起来训练。损失函数使用交叉熵（ cross-entropy<br>loss function），训练方式使用时序反向传播算法（back-propagation through time）。</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>首先就RBGD的拍平处理方式来说，可以说是数据降维的处理方式。降维是为了简化模型，降低参数量。而文章使用的模型复杂度确实不小，比如图神经网络节点很多，其深度就很深，还有各种残差法的使用。但是从数据本身来说，其 D 信息恰恰应该是最有信息量的，直接拍平融合到$x,y$中训练，博主认为这个处理方式不是很精妙，有点像是因为模型复杂参数太多才被迫使用的处理方法。</p>
 <p>其次是图神经网络的优势是可以抽象地处理非欧空间的信息。这里其实还是把它当作是欧氏空间来应用，私以为有启发的地方在于这里在拍平之后用KNN寻找领域，就类似于一个变形的模板了。</p>
-<p>抛砖至此，引玉来评。</p>
+<h3 id="Dynamic-Graph-CNN-for-Learning-on-Point-Clouds"><a href="#Dynamic-Graph-CNN-for-Learning-on-Point-Clouds" class="headerlink" title="Dynamic Graph CNN for Learning on Point Clouds"></a>Dynamic Graph CNN for Learning on Point Clouds</h3><h4 id="简介-1"><a href="#简介-1" class="headerlink" title="简介"></a>简介</h4><p>还在arXiv的论文但是比上一个论文引用高不少，MIT的工作，<a href="https://liuziwei7.github.io/projects/DGCNN" target="_blank" rel="noopener">地址在次</a>。</p>
+<p>论文多次提到 PointNet ，称 DGCNN 是对 PointNet 的改进，PointNet 网络每个点单独提取特征缺乏局部关联。DGCNN 利用图神经网络整合相邻节点的能力，是对它的改进。而这里的动态指的是，每一次迭代，KNN 的邻域都会根据图嵌入来变化。</p>
+<h4 id="正文-1"><a href="#正文-1" class="headerlink" title="正文"></a>正文</h4><h5 id="模型图"><a href="#模型图" class="headerlink" title="模型图"></a>模型图</h5><img src="/2019/09/24/3d-GNN-RGBD-semantic-segmentation/DCGNN.JPG" title="DCGNN">
 
+<p>模型上面是分类，下面是分割。分割模型通过将每个点的一维全局特征和所有EdgeConv输出（用作局部特征）进行串联来扩展分类模型。 它输出每个点的语义标签，实现分割。</p>
+<h5 id="Edge-Convolution"><a href="#Edge-Convolution" class="headerlink" title="Edge Convolution"></a>Edge Convolution</h5><p>这是网络结构的核心构件。</p>
+<p>输入一个 $n \times f$ 的向量，输出一个 $n \times a_n$的向量。这里 $f$ 是信息维度，比如这里的三维点云 $f=3$，论文说如果还有别的信息如颜色，表面信息等还可以往上加（反正咱这里就只做 $f = 3$）。$a_n$ 是层的神经元（隐藏层）或者说是数据信息（输出层）。具体来说，这里也使用了 KNN 来作为点的邻域，每次 Edge Conv 计算的时候，数据都会先变成 $n \times k \times a_n$ ，然后再 pooling 为 $n \times a_n$。</p>
+<p>论文定义一个“逐通道对称整合算子” $\square$ , 每个点的输出写为$x_i = \square_{j:(i,j)\in \varepsilon}h_{\Theta}(x_i,x_j)$。</p>
+<p>这里 $\Theta = (\Theta_1,…,\Theta_M) $ ,是 M 个不同模板的权重向量。然后说这里 $h$ 有好多中选择啦，有不整合信息和有只整合全局的有只整合局部的，咱们选一个最牛批的，又有全局又有局部的：$h_{\Theta} = h’_{\Theta}(x_i, x_j - x_i)$</p>
+<p>进一步具体的：<br>$$<br>\begin{equation}<br>e_{ijm}’ = ReLU(\Theta_{m} \centerdot (x_j - x_i) + <br>phi_m \centerdot x_i)\\<br>\Theta = (\Theta_1,…,\Theta_M,\phi_1,…\phi_M)<br>\end{equation}<br>$$<br>然后整合：$x_{im}’ = max_{j:(i,j)\in \varepsilon}e_{ijm}’$</p>
+<h5 id="Dynamic-graph-update"><a href="#Dynamic-graph-update" class="headerlink" title="Dynamic graph update"></a>Dynamic graph update</h5><p>从代码上来看，确实就是每次每个点都取每一层的最近邻 K 个 x 。那么只有第一层是根据欧式距离来取的 KNN，感觉往后的大概是所谓的特征相似了。但是有一点问题，conv2d 中取 kernel_size=1 ， 也就是上面遗留的$\Theta$和$\phi$是同一个东西？ 额。。这里有点问题啊。。而且这里公式里的 + 是拼接的意思。。</p>
+<h5 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h5><p>论文说他们再最后整合用的是 max 函数，所以就是转置不变性了，在代码中 get_graph_feature 输出前有 permute 函数，当然还有三处 transpose 的使用。 </p>
+<p>论文还说他们这个有平移不变性。这里说它 $e_{ijm} = \Theta_m(x_j - x_i) + \phi_m(x_i + T)$。然后说它可以 $\phi = 0$（我很想问他 kernel_size=1 怎么$\phi$取 0 。。）但是论文说这样不好，两个都有比较好，然后就没了。所以我没看懂为啥这个平移有不变性。只有主观上感觉，毕竟是刚体变换，可能是对的。</p>
+<h5 id="RTFSC"><a href="#RTFSC" class="headerlink" title="RTFSC"></a>RTFSC</h5><p><a href="https://github.com/WangYueFt/dgcnn" target="_blank" rel="noopener">源码地址</a></p>
+<p>其他的模型对比和评价，请看论文啦。</p>
+<h4 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h4><p>遗留问题：$\Theta$和$\phi$是不是同一个东西？有必要区分吗？ </p>
+<p>感悟：不看代码会误解公式，也可能是没看懂代码。</p>
+<p>这里分割的是不是 RGBD 而是密集的三维点云数据，使用了完整的多维信息，但是数据量也不是很大（相比医学影像而言）。这里kernel_size=1有一定启发性，我的理解是把输入到输出用不同的数乘了一下，经过 LeakyReLU 的时候能筛选出不一样的层次 。还需多多体会学习。</p>
+<h3 id="抛砖至此，引玉来评。"><a href="#抛砖至此，引玉来评。" class="headerlink" title="抛砖至此，引玉来评。"></a>抛砖至此，引玉来评。</h3>
     </div>
 	
 	
@@ -469,7 +496,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#3D-Graph-Neural-Networks-for-RGBD-Semantic-Segmentation"><span class="nav-text">3D Graph Neural Networks for RGBD Semantic Segmentation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#简介"><span class="nav-text">简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#正文"><span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#数据处理"><span class="nav-text">数据处理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Unary-CNN"><span class="nav-text">Unary CNN</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#图神经网络"><span class="nav-text">图神经网络</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#预测模型"><span class="nav-text">预测模型</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-text">总结</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#3D-Graph-Neural-Networks-for-RGBD-Semantic-Segmentation"><span class="nav-text">3D Graph Neural Networks for RGBD Semantic Segmentation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#简介"><span class="nav-text">简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#正文"><span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#数据处理"><span class="nav-text">数据处理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Unary-CNN"><span class="nav-text">Unary CNN</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#图神经网络"><span class="nav-text">图神经网络</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#预测模型"><span class="nav-text">预测模型</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dynamic-Graph-CNN-for-Learning-on-Point-Clouds"><span class="nav-text">Dynamic Graph CNN for Learning on Point Clouds</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#简介-1"><span class="nav-text">简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#正文-1"><span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#模型图"><span class="nav-text">模型图</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Edge-Convolution"><span class="nav-text">Edge Convolution</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Dynamic-graph-update"><span class="nav-text">Dynamic graph update</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#特性"><span class="nav-text">特性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#RTFSC"><span class="nav-text">RTFSC</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结-1"><span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#抛砖至此，引玉来评。"><span class="nav-text">抛砖至此，引玉来评。</span></a></li></ol></div>
         
       </div>
       <!--/noindex-->
@@ -734,11 +761,7 @@
     });
     gitalk.render('gitalk-container');
   }, window.Gitalk);
-</script>
-
-  
-  
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config("");
 </script>
@@ -755,5 +778,9 @@
 <script type="text/javascript" src="custom_mathjax_source">
 </script>
 <!-- End: Injected MathJax -->
-<!-- hexo-inject:end --></body>
+<!-- hexo-inject:end -->
+
+  
+  
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
 </html>
