@@ -58,32 +58,33 @@
   };
 </script>
 
-  <meta name="description" content="惟江上之清风，与山间之明月，耳得之而为声，目遇之而成色，取之无禁，用之不竭。">
-<meta name="keywords" content="算法,机器学习,深度学习,计算机视觉,计算机图形学">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Bingo&#39;s blog">
-<meta property="og:url" content="https://bingozju.github.io/index.html">
+  <meta name="description" content="以数组值为步长的路径规划问题题目 Given an array of non-negative integers, you are initially positioned at the first index of the array. Each element in the array represents your maximum jump length at that position.">
+<meta name="keywords" content="动态规划,贪心">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【算法整理】路径规划问题">
+<meta property="og:url" content="https://bingozju.github.io/2019/09/25/route-plan/index.html">
 <meta property="og:site_name" content="Bingo&#39;s blog">
-<meta property="og:description" content="惟江上之清风，与山间之明月，耳得之而为声，目遇之而成色，取之无禁，用之不竭。">
+<meta property="og:description" content="以数组值为步长的路径规划问题题目 Given an array of non-negative integers, you are initially positioned at the first index of the array. Each element in the array represents your maximum jump length at that position.">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-09-25T14:02:55.337Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Bingo&#39;s blog">
-<meta name="twitter:description" content="惟江上之清风，与山间之明月，耳得之而为声，目遇之而成色，取之无禁，用之不竭。">
-  <link rel="canonical" href="https://bingozju.github.io/">
+<meta name="twitter:title" content="【算法整理】路径规划问题">
+<meta name="twitter:description" content="以数组值为步长的路径规划问题题目 Given an array of non-negative integers, you are initially positioned at the first index of the array. Each element in the array represents your maximum jump length at that position.">
+  <link rel="canonical" href="https://bingozju.github.io/2019/09/25/route-plan/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome: true,
-    isPost: false,
+    isHome: false,
+    isPost: true,
     isPage: false,
     isArchive: false
   };
 </script>
 
-  <title>Bingo's blog</title>
+  <title>【算法整理】路径规划问题 | Bingo's blog</title>
   
 
 
@@ -242,12 +243,13 @@
 
           <div id="content" class="content">
             
+
   <div id="posts" class="posts-expand">
-        <article itemscope itemtype="http://schema.org/Article">
+      <article itemscope itemtype="http://schema.org/Article">
   
   
   
-  <div class="post-block home">
+  <div class="post-block post">
     <link itemprop="mainEntityOfPage" href="https://bingozju.github.io/2019/09/25/route-plan/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -260,9 +262,8 @@
       <meta itemprop="name" content="Bingo's blog">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2019/09/25/route-plan/" class="post-title-link" itemprop="url">【算法整理】路径规划问题</a>
+        <h1 class="post-title" itemprop="name headline">【算法整理】路径规划问题
+
           
         </h1>
 
@@ -295,6 +296,14 @@
           
 
           
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+          
 
         </div>
       </header>
@@ -305,442 +314,124 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="以数组值为步长的路径规划问题"><a href="#以数组值为步长的路径规划问题" class="headerlink" title="以数组值为步长的路径规划问题"></a>以数组值为步长的路径规划问题</h3><h4 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h4><blockquote>
+        <h3 id="以数组值为步长的路径规划问题"><a href="#以数组值为步长的路径规划问题" class="headerlink" title="以数组值为步长的路径规划问题"></a>以数组值为步长的路径规划问题</h3><h4 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h4><blockquote>
 <p>Given an array of non-negative integers, you are initially positioned at the first index of the array.</p>
 <p>Each element in the array represents your maximum jump length at that position.</p>
 <p>Your goal is to reach the last index in the minimum number of jumps.</p>
 <p><strong>Note:</strong></p>
 <p>You can assume that you can always reach the last index.</p>
-</blockquote>
-          <!--noindex-->
+</blockquote><a id="more"></a>
+<h4 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Input: [2,3,1,1,4]</span><br><span class="line">Output: 2</span><br><span class="line">Explanation: The minimum number of jumps to reach the last index is 2.</span><br><span class="line">    Jump 1 step from index 0 to 1, then 3 steps to the last index.</span><br></pre></td></tr></table></figure>
+
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>这道题看上去动态规划的痕迹非常明显，DP 式子章口就来：<br>$$<br>OPT[i] = 1 + min[OPT[i-k]\ for\ every\ k];\ \ where \ nums[i-k]\ge k<br>$$<br>算法也是随便写啊，百分比不重要，先pass再说优化嘛：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">int jump(vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        int len = nums.size();</span><br><span class="line">        vector&lt;int&gt; opt;</span><br><span class="line">        opt.resize(len, len);</span><br><span class="line">        opt[0] = 0;</span><br><span class="line">        int res = 1;</span><br><span class="line">        for(int i = 0; i &lt; len ; i ++ )&#123;</span><br><span class="line">            int jump = nums[i];</span><br><span class="line">            res = opt[i] + 1;</span><br><span class="line">            for(int j = 0 ; j &lt; jump &amp;&amp; i + j + 1 &lt; len ; j++ )&#123;</span><br><span class="line">                opt[i + j + 1] = min(res, opt[i + j + 1]);</span><br><span class="line">            &#125; </span><br><span class="line">        &#125;</span><br><span class="line">        return opt[len - 1];</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后呵呵，Time Limit Exceeded，卡在最后一个变态数组上。</p>
+<p>其实这里空间和时间都有优化的余地：</p>
+<ul>
+<li>空间上，这里求的是步数，不需要记录过程的值。其实在一次遍历 nums 数组的时候，对步数累加即可得到答案，不需要额外开数组。</li>
+<li>时间上，这个问题正向来想，其实当找到一个下一跳最远的时候，在这一跳之前和当前最远观察点的所有数都可以直接 = 当前步数 + 1。此时就无需比较每一个位置的步数大小，整个过程找每个观察点的最远跳的位置，然后迭代即可。</li>
+</ul>
+<p>于是算法由DP变成了贪心算法。</p>
+<p>LeedCode提交解法效率C++  Runtime: 8 ms,96.86%   Memory : 10 MB, 90.00%</p>
+<h4 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">jump</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len = nums.size();</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>, index = <span class="number">0</span>, next = <span class="number">0</span> , step = nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">while</span>(index &lt; len - <span class="number">1</span>)&#123; </span><br><span class="line">            res ++;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = index; i &lt; index + step ; i ++ )&#123;</span><br><span class="line">                next = max(nums[i + <span class="number">1</span>] + i + <span class="number">1</span> , next);</span><br><span class="line">                <span class="keyword">if</span>(i + <span class="number">2</span> == len )<span class="keyword">return</span> res;</span><br><span class="line">            &#125;    </span><br><span class="line">            index += step;</span><br><span class="line">            step = next - index;</span><br><span class="line">            next = <span class="number">0</span>;</span><br><span class="line">        &#125; </span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+	
+	
+    
+    
+    
+        
+      
+        <div id="reward-container">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    Donate
+  </button>
+  <div id="qr" style="display: none;">
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/wechatpay.png" alt="Bingo WeChat Pay">
+        <p>WeChat Pay</p>
+      </div>
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/alipay.jpg" alt="Bingo Alipay">
+        <p>Alipay</p>
+      </div>
+
+  </div>
+</div>
+
+      
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Bingo</li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="https://bingozju.github.io/2019/09/25/route-plan/" title="【算法整理】路径规划问题">https://bingozju.github.io/2019/09/25/route-plan/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-cn" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.</li>
+</ul>
+</div>
+
+      
+
+      <footer class="post-footer">
           
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/09/25/route-plan/#more" rel="contents">
-                Read more &raquo;
-              </a>
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/动态规划/" rel="tag"><i class="fa fa-tag"></i> 动态规划</a>
+            
+              <a href="/tags/贪心/" rel="tag"><i class="fa fa-tag"></i> 贪心</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2019/09/24/3d-GNN-RGBD-semantic-segmentation/" rel="next" title="【论文整理】图神经网络3D分割">
+                  <i class="fa fa-chevron-left"></i> 【论文整理】图神经网络3D分割
+                </a>
+              
             </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-	
-	
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </div>
-  
-  
-  
-  </article>
 
-    
-        <article itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="https://bingozju.github.io/2019/09/24/3d-GNN-RGBD-semantic-segmentation/">
+            <span class="post-nav-divider"></span>
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bingo">
-      <meta itemprop="description" content="惟江上之清风，与山间之明月，耳得之而为声，目遇之而成色，取之无禁，用之不竭。">
-      <meta itemprop="image" content="/images/me.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bingo's blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2019/09/24/3d-GNN-RGBD-semantic-segmentation/" class="post-title-link" itemprop="url">【论文整理】图神经网络3D分割</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
+            <div class="post-nav-prev post-nav-item">
               
-                
-              
-
-              <time title="Created: 2019-09-24 21:47:19" itemprop="dateCreated datePublished" datetime="2019-09-24T21:47:19+08:00">2019-09-24</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-09-25 16:54:31" itemprop="dateModified" datetime="2019-09-25T16:54:31+08:00">2019-09-25</time>
-              </span>
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/论文笔记/" itemprop="url" rel="index"><span itemprop="name">论文笔记</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="3D-Graph-Neural-Networks-for-RGBD-Semantic-Segmentation"><a href="#3D-Graph-Neural-Networks-for-RGBD-Semantic-Segmentation" class="headerlink" title="3D Graph Neural Networks for RGBD Semantic Segmentation"></a>3D Graph Neural Networks for RGBD Semantic Segmentation</h3><h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>2017年ICCV的论文，<a href="http://openaccess.thecvf.com/content_iccv_2017/html/Qi_3D_Graph_Neural_ICCV_2017_paper.html" target="_blank" rel="noopener">地址在次</a> 。 </p><p>文章提出一个应用于3D数据集（RGB-D）的图神经网络（3DGNN），在3D点云数据上构建一个K最邻近图。图中每个节点对应一个像素点，并与K个点相关联。每个点上有一个表征向量，这个向量由其设计的一个叫做 <em>unary CNN</em> 的网络从2D图像中初始化。多次更新图网络，综合全部节点信息，根据时间的推移传播模型，使每个节点都对应预测一个语义分类。论文在 <em>NYUD2</em> 和 <em>SUN-RGBD</em> 数据集验证其有效性。</p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/09/24/3d-GNN-RGBD-semantic-segmentation/#more" rel="contents">
-                Read more &raquo;
-              </a>
             </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-	
-	
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
+          </div>
         
       </footer>
+    
   </div>
   
   
   
   </article>
 
-    
-        <article itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="https://bingozju.github.io/2019/09/23/geometric/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bingo">
-      <meta itemprop="description" content="惟江上之清风，与山间之明月，耳得之而为声，目遇之而成色，取之无禁，用之不竭。">
-      <meta itemprop="image" content="/images/me.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bingo's blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2019/09/23/geometric/" class="post-title-link" itemprop="url">【算法合集】几何</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              
-                
-              
-
-              <time title="Created: 2019-09-23 09:36:49" itemprop="dateCreated datePublished" datetime="2019-09-23T09:36:49+08:00">2019-09-23</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-09-24 20:09:38" itemprop="dateModified" datetime="2019-09-24T20:09:38+08:00">2019-09-24</time>
-              </span>
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/算法设计/" itemprop="url" rel="index"><span itemprop="name">算法设计</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="求最多有多少个点在同一条直线上"><a href="#求最多有多少个点在同一条直线上" class="headerlink" title="求最多有多少个点在同一条直线上"></a>求最多有多少个点在同一条直线上</h3><h4 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h4><blockquote>
-<p>Given <em>n</em> points on a 2D plane, find the maximum number of points that lie on the same straight line.</p>
-</blockquote><h4 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Input: [[1,1],[2,2],[3,3]]</span><br><span class="line">Output: 3</span><br><span class="line">Explanation:</span><br><span class="line">^</span><br><span class="line">|</span><br><span class="line">|        o</span><br><span class="line">|     o</span><br><span class="line">|  o  </span><br><span class="line">+-------------&gt;</span><br><span class="line">0  1  2  3  4</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/09/23/geometric/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-	
-	
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
   </div>
-  
-  
-  
-  </article>
-
-    
-        <article itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="https://bingozju.github.io/2019/09/20/find-in-sorted-array/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bingo">
-      <meta itemprop="description" content="惟江上之清风，与山间之明月，耳得之而为声，目遇之而成色，取之无禁，用之不竭。">
-      <meta itemprop="image" content="/images/me.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bingo's blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2019/09/20/find-in-sorted-array/" class="post-title-link" itemprop="url">【算法整理】有序数组的查找</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              
-                
-              
-
-              <time title="Created: 2019-09-20 11:37:01" itemprop="dateCreated datePublished" datetime="2019-09-20T11:37:01+08:00">2019-09-20</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-09-24 20:08:37" itemprop="dateModified" datetime="2019-09-24T20:08:37+08:00">2019-09-24</time>
-              </span>
-            
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/算法设计/" itemprop="url" rel="index"><span itemprop="name">算法设计</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="寻找两个等长有序数组的中位数"><a href="#寻找两个等长有序数组的中位数" class="headerlink" title="寻找两个等长有序数组的中位数"></a>寻找两个等长有序数组的中位数</h3><h4 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h4><blockquote>
-<p>There are two sorted arrays A and B of size n . Find the $n^{th}$ number of the two sorted arrays.  The overall run time complexity should be O(log (n)).</p>
-</blockquote>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/09/20/find-in-sorted-array/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-	
-	
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
-        <article itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block home">
-    <link itemprop="mainEntityOfPage" href="https://bingozju.github.io/2019/09/17/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bingo">
-      <meta itemprop="description" content="惟江上之清风，与山间之明月，耳得之而为声，目遇之而成色，取之无禁，用之不竭。">
-      <meta itemprop="image" content="/images/me.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Bingo's blog">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-            
-            <a href="/2019/09/17/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-          
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              
-                
-              
-
-              <time title="Created: 2019-09-17 15:02:21" itemprop="dateCreated datePublished" datetime="2019-09-17T15:02:21+08:00">2019-09-17</time>
-            </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-09-20 16:52:28" itemprop="dateModified" datetime="2019-09-20T16:52:28+08:00">2019-09-20</time>
-              </span>
-            
-          
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-        
-      
-    </div>
-	
-	
-    
-    
-    
-      <footer class="post-footer">
-          <div class="post-eof"></div>
-        
-      </footer>
-  </div>
-  
-  
-  
-  </article>
-
-    
-  </div>
-
-  
 
 
           </div>
           
+    
+    <div class="comments" id="gitalk-container"></div>
+  
 
 		 
         </div>
@@ -756,6 +447,11 @@
 
   <aside class="sidebar">
     <div class="sidebar-inner">
+        
+        
+        
+        
+      
 
       <ul class="sidebar-nav motion-element">
         <li class="sidebar-nav-toc">
@@ -768,6 +464,8 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#以数组值为步长的路径规划问题"><span class="nav-text">以数组值为步长的路径规划问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目"><span class="nav-text">题目</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Example"><span class="nav-text">Example</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路"><span class="nav-text">思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解答"><span class="nav-text">解答</span></a></li></ol></li></ol></div>
+        
       </div>
       <!--/noindex-->
 
@@ -961,20 +659,6 @@
   
     
       
-        
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  
-    
-      
 <script type="text/x-mathjax-config">
 
   MathJax.Hub.Config({
@@ -1028,6 +712,24 @@
 
   
 
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID: 'ba73796c96fd66bfc2f3',
+      clientSecret: '9999b276bfefb98337980b48c2da2b79945cbe0f',
+      repo: 'bingozju.github.io',
+      owner: 'bingozju',
+      admin: ['bingozju'],
+      id: '0057f42925b461469d4a55cfca17c5f4',
+        language: window.navigator.language || window.navigator.userLanguage,
+      
+      distractionFreeMode: 'true'
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+</script>
 
   
   
