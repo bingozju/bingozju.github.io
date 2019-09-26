@@ -58,19 +58,22 @@
   };
 </script>
 
-  <meta name="description" content="求最多有多少个点在同一条直线上题目 Given n points on a 2D plane, find the maximum number of points that lie on the same straight line. Example12345678910Input: [[1,1],[2,2],[3,3]]Output: 3Explanation:^||        o|">
-<meta name="keywords" content="动态规划">
+  <meta name="description" content="U-Net: Convolutional Networks for Biomedical Image Segmentation简介15年的UNet开山论文，引用量8000+，MICCAI ，地址在此正文Introduction总之就是以前那些工作都不太行，哥的网络很牛逼，拿了各种第一。Network Architecture">
+<meta name="keywords" content="深度学习,医学影像分割,Unet">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【算法合集】几何">
-<meta property="og:url" content="https://bingozju.github.io/2019/09/23/geometric/index.html">
+<meta property="og:title" content="【论文整理】Unet医学影像分割">
+<meta property="og:url" content="https://bingozju.github.io/2019/09/26/U-Net-Segmentation-Medical-Imaging/index.html">
 <meta property="og:site_name" content="Bingo&#39;s blog">
-<meta property="og:description" content="求最多有多少个点在同一条直线上题目 Given n points on a 2D plane, find the maximum number of points that lie on the same straight line. Example12345678910Input: [[1,1],[2,2],[3,3]]Output: 3Explanation:^||        o|">
+<meta property="og:description" content="U-Net: Convolutional Networks for Biomedical Image Segmentation简介15年的UNet开山论文，引用量8000+，MICCAI ，地址在此正文Introduction总之就是以前那些工作都不太行，哥的网络很牛逼，拿了各种第一。Network Architecture">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-24T12:09:38.708Z">
+<meta property="og:image" content="https://bingozju.github.io/2019/09/26/U-Net-Segmentation-Medical-Imaging/UNET.JPG">
+<meta property="og:image" content="https://bingozju.github.io/2019/09/26/U-Net-Segmentation-Medical-Imaging/DENSENET.JPG">
+<meta property="og:updated_time" content="2019-09-26T15:14:48.364Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【算法合集】几何">
-<meta name="twitter:description" content="求最多有多少个点在同一条直线上题目 Given n points on a 2D plane, find the maximum number of points that lie on the same straight line. Example12345678910Input: [[1,1],[2,2],[3,3]]Output: 3Explanation:^||        o|">
-  <link rel="canonical" href="https://bingozju.github.io/2019/09/23/geometric/">
+<meta name="twitter:title" content="【论文整理】Unet医学影像分割">
+<meta name="twitter:description" content="U-Net: Convolutional Networks for Biomedical Image Segmentation简介15年的UNet开山论文，引用量8000+，MICCAI ，地址在此正文Introduction总之就是以前那些工作都不太行，哥的网络很牛逼，拿了各种第一。Network Architecture">
+<meta name="twitter:image" content="https://bingozju.github.io/2019/09/26/U-Net-Segmentation-Medical-Imaging/UNET.JPG">
+  <link rel="canonical" href="https://bingozju.github.io/2019/09/26/U-Net-Segmentation-Medical-Imaging/">
 
 
 <script id="page-configurations">
@@ -84,7 +87,7 @@
   };
 </script>
 
-  <title>【算法合集】几何 | Bingo's blog</title>
+  <title>【论文整理】Unet医学影像分割 | Bingo's blog</title>
   
 
 
@@ -250,7 +253,7 @@
   
   
   <div class="post-block post">
-    <link itemprop="mainEntityOfPage" href="https://bingozju.github.io/2019/09/23/geometric/">
+    <link itemprop="mainEntityOfPage" href="https://bingozju.github.io/2019/09/26/U-Net-Segmentation-Medical-Imaging/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Bingo">
@@ -262,7 +265,7 @@
       <meta itemprop="name" content="Bingo's blog">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">【算法合集】几何
+        <h1 class="post-title" itemprop="name headline">【论文整理】Unet医学影像分割
 
           
         </h1>
@@ -278,19 +281,11 @@
                 
               
 
-              <time title="Created: 2019-09-23 09:36:49" itemprop="dateCreated datePublished" datetime="2019-09-23T09:36:49+08:00">2019-09-23</time>
+              <time title="Created: 2019-09-26 22:53:18 / Modified: 23:14:48" itemprop="dateCreated datePublished" datetime="2019-09-26T22:53:18+08:00">2019-09-26</time>
             </span>
           
             
 
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-09-24 20:09:38" itemprop="dateModified" datetime="2019-09-24T20:09:38+08:00">2019-09-24</time>
-              </span>
             
           
             <span class="post-meta-item">
@@ -299,7 +294,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/算法设计/" itemprop="url" rel="index"><span itemprop="name">算法设计</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/论文笔记/" itemprop="url" rel="index"><span itemprop="name">论文笔记</span></a></span>
 
                 
                 
@@ -326,19 +321,44 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="求最多有多少个点在同一条直线上"><a href="#求最多有多少个点在同一条直线上" class="headerlink" title="求最多有多少个点在同一条直线上"></a>求最多有多少个点在同一条直线上</h3><h4 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h4><blockquote>
-<p>Given <em>n</em> points on a 2D plane, find the maximum number of points that lie on the same straight line.</p>
-</blockquote><h4 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Input: [[1,1],[2,2],[3,3]]</span><br><span class="line">Output: 3</span><br><span class="line">Explanation:</span><br><span class="line">^</span><br><span class="line">|</span><br><span class="line">|        o</span><br><span class="line">|     o</span><br><span class="line">|  o  </span><br><span class="line">+-------------&gt;</span><br><span class="line">0  1  2  3  4</span><br></pre></td></tr></table></figure><a id="more"></a>
+        <h3 id="U-Net-Convolutional-Networks-for-Biomedical-Image-Segmentation"><a href="#U-Net-Convolutional-Networks-for-Biomedical-Image-Segmentation" class="headerlink" title="U-Net: Convolutional Networks for Biomedical Image Segmentation"></a>U-Net: Convolutional Networks for Biomedical Image Segmentation</h3><h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>15年的UNet开山论文，引用量8000+，MICCAI ，<a href="https://link.springer.com/chapter/10.1007/978-3-319-24574-4_28" target="_blank" rel="noopener">地址在此</a></p><h4 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h4><img src="/2019/09/26/U-Net-Segmentation-Medical-Imaging/UNET.JPG" title="unet"><h5 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h5><p>总之就是以前那些工作都不太行，哥的网络很牛逼，拿了各种第一。</p><h5 id="Network-Architecture"><a href="#Network-Architecture" class="headerlink" title="Network Architecture"></a>Network Architecture</h5><a id="more"></a>
 
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Input: [[1,1],[3,2],[5,3],[4,1],[2,3],[1,4]]</span><br><span class="line">Output: 4</span><br><span class="line">Explanation:</span><br><span class="line">^</span><br><span class="line">|</span><br><span class="line">|  o</span><br><span class="line">|     o        o</span><br><span class="line">|        o</span><br><span class="line">|  o        o</span><br><span class="line">+-------------------&gt;</span><br><span class="line">0  1  2  3  4  5  6</span><br></pre></td></tr></table></figure>
 
-<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>计算多少个点在同一条直线上，可以转化为，一个向量上能经过多少个点，将向量移到坐标原点，问题又变成了多少个点有相同的斜率。所以现在思路就很明显了，在一个循环中分别将每个点作为坐标原点，然后在循环体内计算其他点与他的斜率，用动态规划来更新最大的点数:<br>$$<br>OPT[i] = MAX(points[i], OPT[i - 1])<br>$$</p>
-<p>这里需要注意的是分母为零的情况，我的算法中处理为一个很小的小数（这里可能不够优雅，有非常小的概率会导致算法出错，可以考虑单独计数。但是我认为就算真的有这么一个点，那他和Y轴也是非常接近的，一般工程上也认为它等同于Y轴了）</p>
-<p>这里有同学可能会想到GCD的方法，事实上对每两个点求GCD是有重复的信息计算的。而直接作差（即假定坐标原点）就可以免去这些额外的计算。</p>
-<p>最后结果是：runtime 8 ms 95.15%, memory: 9.6 MB, 71.43%</p>
-<h4 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">maxPoints</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; points)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">int</span> ps = points.size();</span><br><span class="line">		<span class="keyword">if</span> (ps == <span class="number">0</span> || ps == <span class="number">1</span>)<span class="keyword">return</span> ps;</span><br><span class="line">		<span class="keyword">int</span> res_max = <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; ps; i++) &#123;</span><br><span class="line">			<span class="keyword">int</span> temp = <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">int</span> res_temp = <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">int</span> res = <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; ps; j++) &#123;</span><br><span class="line">				<span class="keyword">if</span> (points[j][<span class="number">1</span>] == points[i][<span class="number">1</span>] &amp;&amp; points[j][<span class="number">0</span>] == points[i][<span class="number">0</span>]) &#123;</span><br><span class="line">					temp++;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="built_in">vector</span>&lt;<span class="keyword">double</span>&gt; ks;</span><br><span class="line">			ks.resize(points.size() - temp + <span class="number">1</span>);</span><br><span class="line">			<span class="keyword">if</span> (ks.size() == <span class="number">0</span>)<span class="keyword">return</span> ps;</span><br><span class="line"></span><br><span class="line">			res = temp;</span><br><span class="line">			res_temp = temp;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>, k = <span class="number">0</span>; j &lt; points.size(); j++) &#123;</span><br><span class="line">				<span class="keyword">if</span> (points[j][<span class="number">0</span>] == points[i][<span class="number">0</span>] &amp;&amp; points[j][<span class="number">1</span>] == points[i][<span class="number">1</span>])</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">				<span class="keyword">if</span> (points[j][<span class="number">1</span>] == points[i][<span class="number">1</span>])ks[k++] -= <span class="number">1e-25</span>;</span><br><span class="line">				<span class="keyword">else</span> ks[k++] =  <span class="number">1.0</span> * (points[j][<span class="number">0</span>] - points[i][<span class="number">0</span>]) / (points[j][<span class="number">1</span>] - points[i][<span class="number">1</span>]);</span><br><span class="line">			&#125;</span><br><span class="line">			sort(ks.begin(), ks.end());</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; ks.size(); j++) &#123;</span><br><span class="line">				<span class="keyword">double</span> k_temp = ks[j - <span class="number">1</span>];</span><br><span class="line">				<span class="keyword">if</span> (ks[j] == k_temp) &#123;</span><br><span class="line">					res_temp++;</span><br><span class="line">					res = max(res, res_temp);</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">else</span> </span><br><span class="line">					res_temp = temp;</span><br><span class="line">			&#125;</span><br><span class="line">			res_max = max(res, res_max);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> res_max;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
+<p>网络主要由一个收缩路径（左侧contracting path）和一个扩展路径（右侧expansive path ）组成。</p>
+<p>contracting path的每个模块都由两个应用 3 x 3 卷积核的卷积层组成，每个卷积后跟一个整流线性单位（ReLU）和一个 2 x 2 最大合并运算，步长为2用于下采样。在每个降采样步骤中，特征通道的数量加倍。</p>
+<p>expansive path中的每个步骤都对特征图进行上采样，然后进行 2 x 2 的向上卷积，以将特征通道的数量减半，并与从收缩路径中相应裁剪的特征图进行级联，再进行两个 3 x 3 卷积，每个后跟一个ReLU。由于每次卷积中都会丢失边界像素，因此有必要进行裁剪。在最后一层，使用 1 x 1 卷积将每个64分量特征向量映射到所需的类数。</p>
+<p>该网络总共有23个卷积层。</p>
+<h5 id="Training"><a href="#Training" class="headerlink" title="Training"></a>Training</h5><p>损失函数是交叉熵函数，公式：<br>$$<br>\begin{equation}<br>p_k(x)=exp(a_k(x))/(\sum_{k’=1}^{K}exp(a_{k’}(x)))\\<br>E = \sum_{x \in \Omega}w(x)log(p_{l(x)}(x))\\<br>w(x)=w_c(x) + w_0\centerdot exp(-\frac{d_1(x)+d_2(x)}{2\sigma^2})<br>\end{equation}<br>$$<br>这里$a_k(x)$是$x$点在$k$通道的激活函数，$K$是类别总数，$p_k(x)$是近似最大函数。</p>
+<p>$l:\Omega| {1,…,K}$是真实标签，$w:\Omega|R$是一个用来调整的让一些点更重要的权重 map 。</p>
+<p>$w_c$是用来平衡概率的权重图，$d_1,d_2$分别是点到最近一个单元（类别？）边界和第二个单元（类别？）边界的最近距离。</p>
+<h5 id="感悟"><a href="#感悟" class="headerlink" title="感悟"></a>感悟</h5><p>模型就不谈了。</p>
+<p>这个函数设计值得学习，因为 UNet 到输出的地方，如果没有权重调整，细节上很容易丢失。在医学影像里，比如针对某个小病灶的分割，就容易被当成噪声给去掉了。这里的损失函数一定程度上弥补了细节的重要性。</p>
+<h3 id="H-DenseUNet-Hybrid-Densely-Connected-UNet-for-Liver-and-Tumor-Segmentation-from-CT-Volumes"><a href="#H-DenseUNet-Hybrid-Densely-Connected-UNet-for-Liver-and-Tumor-Segmentation-from-CT-Volumes" class="headerlink" title="H-DenseUNet: Hybrid Densely Connected UNet for Liver and Tumor Segmentation from CT Volumes"></a>H-DenseUNet: Hybrid Densely Connected UNet for Liver and Tumor Segmentation from CT Volumes</h3><h4 id="简介-1"><a href="#简介-1" class="headerlink" title="简介"></a>简介</h4><p>2018 IEEE TRANSACTIONS ON MEDICAL IMAGING 的论文，<a href="https://ieeexplore.ieee.org/abstract/document/8379359" target="_blank" rel="noopener">地址在此</a>。</p>
+<p>深度学习的模型由于其高计算开销和高内存消耗，在大数据量的3D图像，尤其是医学影像上应用比较困难。在这个论文中，他们实现提出一个叫做 H-DenseUNet 的深度网络，实现肺部肿瘤的分割（不仅仅是分割，而且更关注肿瘤区域哟）。论文说它们的具体难点有：</p>
+<ul>
+<li>肿瘤大小，数目，位置，形状因人而异。</li>
+<li>病变区域不一定有明显界限，限制基于边缘的分割的方法。</li>
+<li>CT 图像 Z 轴方向的尺寸差异很大，体素间距范围从 0.45mm 到 6.0mm ，给分割带来挑战。</li>
+</ul>
+<h4 id="正文-1"><a href="#正文-1" class="headerlink" title="正文"></a>正文</h4><p>整体来看，他们先简单得使用 ResNet 做一个粗略的区域分割，然后利用 H-DenseUnet 网络中提取的综合特征（2D DenseUNet 的 $f_{2d}$ 和 “不知道怎么得到”的 3D 的 $ f_{3d}$ 的合体），然后丢到一个叫做 hybrid feature fusion (HFF) layer 的模块去确认分割区域。</p>
+<h5 id="A-Deep-2D-DenseUNet-for-Intra-slice-Feature-Extraction"><a href="#A-Deep-2D-DenseUNet-for-Intra-slice-Feature-Extraction" class="headerlink" title="A. Deep 2D DenseUNet for Intra-slice Feature Extraction"></a>A. Deep 2D DenseUNet for Intra-slice Feature Extraction</h5><p>这一部分是 2D DenseUNet ，主要提取切片内特征的。论文借鉴了 DenseNet-161 的网络（然后顺便夸了一下它），但由于 DenseNet 是用来做分类的，要做分隔就要上采样，而直接上采样嘛会损失细节信息，所以考虑到了 Unet ， 可以将 DenseNet 各级的特征也密集连接到 Unet 做 decode，实现 2D 分割。于是得到了一个 DenseUNet-167 的结构。</p>
+<img src="/2019/09/26/U-Net-Segmentation-Medical-Imaging/DENSENET.JPG" title="densenet">
+<p>$$<br>\begin{equation}<br>X_{2d} = f_{2d}(I_{2d};\theta_{2d}),X_{2d} \in R^{12n\times 224 \times 224 \times 64}\\<br>y_{2d}=f_{2dcls}(X_{2d};\theta_{2dcls}),y_{2d} \in R^{12n\times 224 \times 224 \times 3}<br>\end{equation}<br>$$<br>$x_{2d}$是上采样层 no.5 的产物，而 $y_{2d}’$ 是像素的类别概率。</p>
+<p>但是论文这里说，2D DenseUNet 的输入不是每一片单独的输入，而是每一个相邻的三个切片的串联，公式上来看，对于一个 224 × 224 × 12 的输入体，令 $I \in R^{n \times 224 \times 224 \times 12}$ 表示样本集。这里 n 表示 batch size。取一个三维体到相邻三切片串联的变换 $F$ ，就有 $I_{2d} = F(I)$，$I_{2d} \in R^{12n \times 224 \times 224 \times 3}$。嗯没问题。但是为什么要取三个串联呢。</p>
+<p>忽然，论文这里说，咱们这里既然已经串联的每三个相邻切片，那咱们就是 2D 和 3D DenseUNet 一起训练啦~</p>
+<p>???.jpg</p>
+<p>不会就这样算是3D的特征了吧？看看 B 部分怎么说吧。</p>
+<h5 id="B-H-DenseUNet-for-Hybrid-Feature-Exploration"><a href="#B-H-DenseUNet-for-Hybrid-Feature-Exploration" class="headerlink" title="B. H-DenseUNet for Hybrid Feature Exploration"></a>B. H-DenseUNet for Hybrid Feature Exploration</h5><p>论文说：3D DenseUNet 直接处理原图像有着巨大的 GPU 计算开销，内存的开销，和网络的深度，你不值得拥有。咱们这个 H-DenseUNe 就是同时处理的片内和片见特征的。怎么处理呢？先给你看一个公式：<br>$$<br>\begin{equation}<br>X_{2d}’ = F^{-1}(X_{2d}),X_{2d}’ \in R^{12n\times 224 \times 224 \times 64}\\<br>y_{2d}’ = F^{-1}(y_{2d}),y_{2d}’ \in R^{12n\times 224 \times 224 \times 3}<br>\end{equation}<br>$$<br>敲黑板。。他说 2D 要和 3D 混合就需要维度上对齐，如所以要如此这般转换一下。然后 3D DenseUNet 可以直接从这里的 $y_{2d}’$ 和原始体$I$ 的串联中“蒸馏”（distill）出 3D 的特征。不是说计算量大么为什么还要加上$I$一起训练？论文说，有了 3D 特征的指导，找到全局最优点就更快了。emmmmmm 好像是有那么点道理哈。。。看公式：<br>$$<br>\begin{equation}<br>X_{3d} = f_{3d}(I,y_{2d}’;\theta_{3d})\\<br>Z=X_{3d}+X_{2d}’<br>\end{equation}<br>$$<br>$Z$ 就是混合特征。</p>
+<h5 id="C-Loss-Function-Training-and-Inference-Schemes"><a href="#C-Loss-Function-Training-and-Inference-Schemes" class="headerlink" title="C. Loss Function, Training and Inference Schemes"></a>C. Loss Function, Training and Inference Schemes</h5><p>损失函数用的是交叉熵函数，剩余公式列一下：<br>$$<br>\begin{equation}<br>H = f_{HFF}(Z; \theta_{HFF})\\<br>y_{H}’= f_{HFFcls}(H; \theta_{HFFcls})\\<br>\end{equation}<br>$$</p>
+<p>$L(y,y’)=-\frac{1}{N} \sum^{N}_{i=1}s$</p>
+<p>$s=(\sum_{c=1}^3ss)$</p>
+<p>$ss=w_{i}^{c} y^{c}_{i} log y`_i^c$</p>
+<p>非要这么写，垃圾公式渲染器。。。</p>
+<h5 id="RTFSC"><a href="#RTFSC" class="headerlink" title="RTFSC"></a>RTFSC</h5><p><a href="https://github.com/xmengli999/H-DenseUNet" target="_blank" rel="noopener">代码地址</a></p>
+<p>首页头像有惊喜，然鹅这代码比 3D 点云分割的代码长到不知道那里去了。。。</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>提取多个 2D 信息来指导 3D 的训练是个好想法，值得学习和实践。然而只是解决了计算时间的问题，计算感觉是不是空间反而更大了。</p>
+<p>医学影像里，提取特征前的简易分割是成功的，那么是否有替代品。</p>
 
     </div>
 	
@@ -379,7 +399,7 @@
     <strong>Post author:  </strong>Bingo</li>
   <li class="post-copyright-link">
     <strong>Post link: </strong>
-    <a href="https://bingozju.github.io/2019/09/23/geometric/" title="【算法合集】几何">https://bingozju.github.io/2019/09/23/geometric/</a>
+    <a href="https://bingozju.github.io/2019/09/26/U-Net-Segmentation-Medical-Imaging/" title="【论文整理】Unet医学影像分割">https://bingozju.github.io/2019/09/26/U-Net-Segmentation-Medical-Imaging/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-cn" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.</li>
@@ -394,7 +414,11 @@
           
           <div class="post-tags">
             
-              <a href="/tags/动态规划/" rel="tag"><i class="fa fa-tag"></i> 动态规划</a>
+              <a href="/tags/深度学习/" rel="tag"><i class="fa fa-tag"></i> 深度学习</a>
+            
+              <a href="/tags/医学影像分割/" rel="tag"><i class="fa fa-tag"></i> 医学影像分割</a>
+            
+              <a href="/tags/Unet/" rel="tag"><i class="fa fa-tag"></i> Unet</a>
             
           </div>
         
@@ -404,8 +428,8 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2019/09/20/find-in-sorted-array/" rel="next" title="【算法整理】有序数组的查找">
-                  <i class="fa fa-chevron-left"></i> 【算法整理】有序数组的查找
+                <a href="/2019/09/25/route-plan/" rel="next" title="【算法整理】路径规划问题">
+                  <i class="fa fa-chevron-left"></i> 【算法整理】路径规划问题
                 </a>
               
             </div>
@@ -413,10 +437,6 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2019/09/24/3d-GNN-RGBD-semantic-segmentation/" rel="prev" title="【论文整理】图神经网络3D分割">
-                  【论文整理】图神经网络3D分割 <i class="fa fa-chevron-right"></i>
-                </a>
               
             </div>
           </div>
@@ -469,7 +489,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#求最多有多少个点在同一条直线上"><span class="nav-text">求最多有多少个点在同一条直线上</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目"><span class="nav-text">题目</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Example"><span class="nav-text">Example</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路"><span class="nav-text">思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解答"><span class="nav-text">解答</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#U-Net-Convolutional-Networks-for-Biomedical-Image-Segmentation"><span class="nav-text">U-Net: Convolutional Networks for Biomedical Image Segmentation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#简介"><span class="nav-text">简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#正文"><span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Introduction"><span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Network-Architecture"><span class="nav-text">Network Architecture</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Training"><span class="nav-text">Training</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#感悟"><span class="nav-text">感悟</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#H-DenseUNet-Hybrid-Densely-Connected-UNet-for-Liver-and-Tumor-Segmentation-from-CT-Volumes"><span class="nav-text">H-DenseUNet: Hybrid Densely Connected UNet for Liver and Tumor Segmentation from CT Volumes</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#简介-1"><span class="nav-text">简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#正文-1"><span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#A-Deep-2D-DenseUNet-for-Intra-slice-Feature-Extraction"><span class="nav-text">A. Deep 2D DenseUNet for Intra-slice Feature Extraction</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#B-H-DenseUNet-for-Hybrid-Feature-Exploration"><span class="nav-text">B. H-DenseUNet for Hybrid Feature Exploration</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#C-Loss-Function-Training-and-Inference-Schemes"><span class="nav-text">C. Loss Function, Training and Inference Schemes</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#RTFSC"><span class="nav-text">RTFSC</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-text">总结</span></a></li></ol></li></ol></div>
         
       </div>
       <!--/noindex-->
@@ -727,7 +747,7 @@
       repo: 'bingozju.github.io',
       owner: 'bingozju',
       admin: ['bingozju'],
-      id: 'f57b77e4158eb1a4d2e16f209a473da3',
+      id: '5657d6378dd5919d67a351c04237fbbd',
         language: window.navigator.language || window.navigator.userLanguage,
       
       distractionFreeMode: 'true'
