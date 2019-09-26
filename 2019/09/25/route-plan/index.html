@@ -59,14 +59,14 @@
 </script>
 
   <meta name="description" content="以数组值为步长的路径规划问题题目 Given an array of non-negative integers, you are initially positioned at the first index of the array. Each element in the array represents your maximum jump length at that position.">
-<meta name="keywords" content="动态规划,贪心">
+<meta name="keywords" content="动态规划,贪心,分治,DFS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【算法整理】路径规划问题">
 <meta property="og:url" content="https://bingozju.github.io/2019/09/25/route-plan/index.html">
 <meta property="og:site_name" content="Bingo&#39;s blog">
 <meta property="og:description" content="以数组值为步长的路径规划问题题目 Given an array of non-negative integers, you are initially positioned at the first index of the array. Each element in the array represents your maximum jump length at that position.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-25T14:02:55.337Z">
+<meta property="og:updated_time" content="2019-09-26T01:20:00.619Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【算法整理】路径规划问题">
 <meta name="twitter:description" content="以数组值为步长的路径规划问题题目 Given an array of non-negative integers, you are initially positioned at the first index of the array. Each element in the array represents your maximum jump length at that position.">
@@ -281,6 +281,18 @@
               <time title="Created: 2019-09-25 22:02:55" itemprop="dateCreated datePublished" datetime="2019-09-25T22:02:55+08:00">2019-09-25</time>
             </span>
           
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-09-26 09:20:00" itemprop="dateModified" datetime="2019-09-26T09:20:00+08:00">2019-09-26</time>
+              </span>
+            
+          
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -335,6 +347,27 @@
 <p>于是算法由DP变成了贪心算法。</p>
 <p>LeedCode提交解法效率C++  Runtime: 8 ms,96.86%   Memory : 10 MB, 90.00%</p>
 <h4 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">jump</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len = nums.size();</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>, index = <span class="number">0</span>, next = <span class="number">0</span> , step = nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">while</span>(index &lt; len - <span class="number">1</span>)&#123; </span><br><span class="line">            res ++;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = index; i &lt; index + step ; i ++ )&#123;</span><br><span class="line">                next = max(nums[i + <span class="number">1</span>] + i + <span class="number">1</span> , next);</span><br><span class="line">                <span class="keyword">if</span>(i + <span class="number">2</span> == len )<span class="keyword">return</span> res;</span><br><span class="line">            &#125;    </span><br><span class="line">            index += step;</span><br><span class="line">            step = next - index;</span><br><span class="line">            next = <span class="number">0</span>;</span><br><span class="line">        &#125; </span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="棋盘可行路径计数"><a href="#棋盘可行路径计数" class="headerlink" title="棋盘可行路径计数"></a>棋盘可行路径计数</h3><h4 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a>题目</h4><blockquote>
+<p>On a 2-dimensional <code>grid</code>, there are 4 types of squares:</p>
+<ul>
+<li><code>1</code> represents the starting square.  There is exactly one starting square.</li>
+<li><code>2</code> represents the ending square.  There is exactly one ending square.</li>
+<li><code>0</code> represents empty squares we can walk over.</li>
+<li><code>-1</code> represents obstacles that we cannot walk over.</li>
+</ul>
+<p>Return the number of 4-directional walks from the starting square to the ending square, that <strong>walk over every non-obstacle square exactly once</strong>.</p>
+</blockquote>
+<p>求一个棋盘上从 1 到 2 的经过所有可行域的可行路径，其中 0 为可行域， -1 为不可行域。</p>
+<h4 id="Example-1"><a href="#Example-1" class="headerlink" title="Example"></a>Example</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Input: [[1,0,0,0],[0,0,0,0],[0,0,2,-1]]</span><br><span class="line">Output: 2</span><br><span class="line">Explanation: We have the following two paths: </span><br><span class="line">1. (0,0),(0,1),(0,2),(0,3),(1,3),(1,2),(1,1),(1,0),(2,0),(2,1),(2,2)</span><br><span class="line">2. (0,0),(1,0),(2,0),(2,1),(1,1),(0,1),(0,2),(0,3),(1,3),(1,2),(2,2)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Input: [[1,0,0,0],[0,0,0,0],[0,0,0,2]]</span><br><span class="line">Output: 4</span><br><span class="line">Explanation: We have the following four paths: </span><br><span class="line">1. (0,0),(0,1),(0,2),(0,3),(1,3),(1,2),(1,1),(1,0),(2,0),(2,1),(2,2),(2,3)</span><br><span class="line">2. (0,0),(0,1),(1,1),(1,0),(2,0),(2,1),(2,2),(1,2),(0,2),(0,3),(1,3),(2,3)</span><br><span class="line">3. (0,0),(1,0),(2,0),(2,1),(2,2),(1,2),(1,1),(0,1),(0,2),(0,3),(1,3),(2,3)</span><br><span class="line">4. (0,0),(1,0),(2,0),(2,1),(1,1),(0,1),(0,2),(0,3),(1,3),(1,2),(2,2),(2,3)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Input: [[0,1],[2,0]]</span><br><span class="line">Output: 0</span><br><span class="line">Explanation: </span><br><span class="line">There is no path that walks over every empty square exactly once.</span><br><span class="line">Note that the starting and ending square can be anywhere in the grid.</span><br></pre></td></tr></table></figure>
+
+<h4 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h4><p>这道题 分治 + DFS 很明显啊，稍微注意vector 传值是深拷贝，会无形中增加了至少 $O(n^2)$ 的复杂度。引用的时候，需要注意在 DFS 返回的时候恢复原路径值。张口就来啦：</p>
+<p>Runtime: 4 ms, faster than 77.56% 。Memory Usage: 8.6 MB, less than 100.00% 。</p>
+<h4 id="解答-1"><a href="#解答-1" class="headerlink" title="解答"></a>解答</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="keyword">int</span> sx = <span class="number">0</span>, sy = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> ex = <span class="number">0</span>, ey = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> zeros = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">uniquePathsIII</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; grid)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; grid.size(); i++)</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; grid[i].size(); j++) &#123;</span><br><span class="line">				<span class="keyword">if</span> (grid[i][j] == <span class="number">1</span>) &#123;</span><br><span class="line">					sx = i;</span><br><span class="line">					sy = j;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">else</span> <span class="keyword">if</span> (grid[i][j] == <span class="number">2</span>) &#123;</span><br><span class="line">					ex = i;</span><br><span class="line">					ey = j;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">else</span> <span class="keyword">if</span> (grid[i][j] == <span class="number">0</span>)</span><br><span class="line">					zeros++;</span><br><span class="line">			&#125;</span><br><span class="line">		<span class="keyword">return</span> route(grid, sx, sy, zeros);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">route</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; grid, <span class="keyword">int</span> x, <span class="keyword">int</span> y, <span class="keyword">int</span> z)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (z == <span class="number">-1</span> ) &#123;</span><br><span class="line">			<span class="keyword">if</span> (x == ex &amp;&amp; y == ey)<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (x == ex &amp;&amp; y == ey &amp;&amp; z != <span class="number">0</span>)<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">if</span> ( x &lt; <span class="number">0</span> || x &gt;= grid.size() || y &lt; <span class="number">0</span> || y &gt;= grid[x].size()|| grid[x][y] == <span class="number">-1</span>)</span><br><span class="line">			<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">		grid[x][y] = <span class="number">-1</span>;</span><br><span class="line">		<span class="keyword">int</span> res = route(grid, x - <span class="number">1</span>, y, z - <span class="number">1</span>) + route(grid, x + <span class="number">1</span>, y, z - <span class="number">1</span>) +</span><br><span class="line">			route(grid, x, y - <span class="number">1</span>, z - <span class="number">1</span>) +</span><br><span class="line">			route(grid, x, y + <span class="number">1</span>, z - <span class="number">1</span>);</span><br><span class="line">        grid[x][y] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 
     </div>
@@ -394,6 +427,10 @@
               <a href="/tags/动态规划/" rel="tag"><i class="fa fa-tag"></i> 动态规划</a>
             
               <a href="/tags/贪心/" rel="tag"><i class="fa fa-tag"></i> 贪心</a>
+            
+              <a href="/tags/分治/" rel="tag"><i class="fa fa-tag"></i> 分治</a>
+            
+              <a href="/tags/DFS/" rel="tag"><i class="fa fa-tag"></i> DFS</a>
             
           </div>
         
@@ -464,7 +501,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#以数组值为步长的路径规划问题"><span class="nav-text">以数组值为步长的路径规划问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目"><span class="nav-text">题目</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Example"><span class="nav-text">Example</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路"><span class="nav-text">思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解答"><span class="nav-text">解答</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#以数组值为步长的路径规划问题"><span class="nav-text">以数组值为步长的路径规划问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目"><span class="nav-text">题目</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Example"><span class="nav-text">Example</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路"><span class="nav-text">思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解答"><span class="nav-text">解答</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#棋盘可行路径计数"><span class="nav-text">棋盘可行路径计数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目-1"><span class="nav-text">题目</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Example-1"><span class="nav-text">Example</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路-1"><span class="nav-text">思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解答-1"><span class="nav-text">解答</span></a></li></ol></li></ol></div>
         
       </div>
       <!--/noindex-->
@@ -508,7 +545,7 @@
             <a href="/tags/">
           
         
-        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">tags</span>
         </a>
       </div>
@@ -644,7 +681,7 @@
       repo: 'bingozju.github.io',
       owner: 'bingozju',
       admin: ['bingozju'],
-      id: 'a676607444a8bc8b150c9a3aff884e61',
+      id: 'f47af1d1eda4d807b02bba32be15120b',
         language: window.navigator.language || window.navigator.userLanguage,
       
       distractionFreeMode: 'true'
@@ -729,11 +766,7 @@
     });
     gitalk.render('gitalk-container');
   }, window.Gitalk);
-</script>
-
-  
-  
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+</script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config("");
 </script>
@@ -750,5 +783,9 @@
 <script type="text/javascript" src="custom_mathjax_source">
 </script>
 <!-- End: Injected MathJax -->
-<!-- hexo-inject:end --></body>
+<!-- hexo-inject:end -->
+
+  
+  
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
 </html>
