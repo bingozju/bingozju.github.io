@@ -25,7 +25,9 @@
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
 
 
+
 <script id="hexo-configurations">
+
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
@@ -57,6 +59,21 @@
     },
     sidebarPadding: 40
   };
+</script>
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
 </script>
 
   <meta name="description" content="3D Graph Neural Networks for RGBD Semantic Segmentation简介2017年ICCV的论文，地址在次 。 文章提出一个应用于3D数据集（RGB-D）的图神经网络（3DGNN），在3D点云数据上构建一个K最邻近图。图中每个节点对应一个像素点，并与K个点相关联。每个点上有一个表征向量，这个向量由其设计的一个叫做 unary CNN 的网络从2D图像中初始">
@@ -121,6 +138,7 @@
   </style>
 </noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
+  
 </head>
 
 

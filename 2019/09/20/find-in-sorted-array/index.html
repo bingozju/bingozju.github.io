@@ -25,7 +25,9 @@
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
 
 
+
 <script id="hexo-configurations">
+
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
@@ -57,6 +59,21 @@
     },
     sidebarPadding: 40
   };
+</script>
+
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
 </script>
 
   <meta name="description" content="寻找两个等长有序数组的中位数题目 There are two sorted arrays A and B of size n . Find the $n^{th}$ number of the two sorted arrays.  The overall run time complexity should be O(log (n)).">
@@ -119,6 +136,7 @@
   </style>
 </noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
+  
 </head>
 
 
