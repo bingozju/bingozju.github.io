@@ -267,6 +267,97 @@
   
   
   <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="https://bingozju.github.io/2019/09/30/CFCN/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bingo">
+      <meta itemprop="description" content="惟江上之清风，与山间之明月，耳得之而为声，目遇之而成色，取之无禁，用之不竭。">
+      <meta itemprop="image" content="/images/me.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="茶杯子的Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2019/09/30/CFCN/" class="post-title-link" itemprop="url">【论文整理】CFCN医学影像分割</a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2019-09-30 17:26:45" itemprop="dateCreated datePublished" datetime="2019-09-30T17:26:45+08:00">2019-09-30</time>
+            </span>
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/论文笔记/" itemprop="url" rel="index"><span itemprop="name">论文笔记</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="Automatic-Liver-and-Tumor-Segmentation-of-CT-and-MRI-Volumes-Using-Cascaded-Fully-Convolutional-Neural-Networks"><a href="#Automatic-Liver-and-Tumor-Segmentation-of-CT-and-MRI-Volumes-Using-Cascaded-Fully-Convolutional-Neural-Networks" class="headerlink" title="Automatic Liver and Tumor Segmentation of CT and MRI Volumes Using Cascaded Fully Convolutional Neural Networks"></a>Automatic Liver and Tumor Segmentation of CT and MRI Volumes Using Cascaded Fully Convolutional Neural Networks</h3><h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>2016年MICCAI的论文，<a href="https://link.springer.com/chapter/10.1007/978-3-319-46723-8_48" target="_blank" rel="noopener">论文在此</a></p><p>文章主要讲了使用 CFCN（级联的全连接神经网络 + 条件随机场） 方法做肝部CT病变区域和腹部核磁共振图像的分割，实现大规模医学试验和定量图像分析的分割。CFCN 主要是两层 FCN 网络的串联，第一层用来分割一个基本的 ROI， 第二层用来分割病变区域（条件随机场在下面说）。模型可扩展性上，他们在腹部的数据上训练取得的结果应用在肝部CT图像也有超过94%的 Dice scores 评分，也在 3DIRCAD 数据集上验证了对MRI肺部病变分割的鲁棒性。</p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/09/30/CFCN/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+	
+	
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="https://bingozju.github.io/2019/09/26/U-Net-Segmentation-Medical-Imaging/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -296,11 +387,19 @@
                 
               
 
-              <time title="Created: 2019-09-26 22:53:18 / Modified: 23:14:48" itemprop="dateCreated datePublished" datetime="2019-09-26T22:53:18+08:00">2019-09-26</time>
+              <time title="Created: 2019-09-26 22:53:18" itemprop="dateCreated datePublished" datetime="2019-09-26T22:53:18+08:00">2019-09-26</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-09-30 15:26:34" itemprop="dateModified" datetime="2019-09-30T15:26:34+08:00">2019-09-30</time>
+              </span>
             
           
             <span class="post-meta-item">
@@ -910,7 +1009,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-count">7</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -936,7 +1035,7 @@
             <a href="/tags/">
           
         
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">tags</span>
         </a>
       </div>
@@ -1088,6 +1187,8 @@
     
       
         
+      
+    
       
     
       

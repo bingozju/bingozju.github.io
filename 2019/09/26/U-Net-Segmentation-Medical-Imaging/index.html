@@ -86,7 +86,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://bingozju.github.io/2019/09/26/U-Net-Segmentation-Medical-Imaging/UNET.JPG">
 <meta property="og:image" content="https://bingozju.github.io/2019/09/26/U-Net-Segmentation-Medical-Imaging/DENSENET.JPG">
-<meta property="og:updated_time" content="2019-09-26T15:14:48.364Z">
+<meta property="og:updated_time" content="2019-09-30T07:26:34.432Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【论文整理】Unet医学影像分割">
 <meta name="twitter:description" content="U-Net: Convolutional Networks for Biomedical Image Segmentation简介15年的UNet开山论文，引用量8000+，MICCAI ，地址在此正文Introduction总之就是以前那些工作都不太行，哥的网络很牛逼，拿了各种第一。Network Architecture">
@@ -300,11 +300,19 @@
                 
               
 
-              <time title="Created: 2019-09-26 22:53:18 / Modified: 23:14:48" itemprop="dateCreated datePublished" datetime="2019-09-26T22:53:18+08:00">2019-09-26</time>
+              <time title="Created: 2019-09-26 22:53:18" itemprop="dateCreated datePublished" datetime="2019-09-26T22:53:18+08:00">2019-09-26</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-09-30 15:26:34" itemprop="dateModified" datetime="2019-09-30T15:26:34+08:00">2019-09-30</time>
+              </span>
             
           
             <span class="post-meta-item">
@@ -354,7 +362,7 @@
 <h5 id="感悟"><a href="#感悟" class="headerlink" title="感悟"></a>感悟</h5><p>模型就不谈了。</p>
 <p>这个函数设计值得学习，因为 UNet 到输出的地方，如果没有权重调整，细节上很容易丢失。在医学影像里，比如针对某个小病灶的分割，就容易被当成噪声给去掉了。这里的损失函数一定程度上弥补了细节的重要性。</p>
 <h3 id="H-DenseUNet-Hybrid-Densely-Connected-UNet-for-Liver-and-Tumor-Segmentation-from-CT-Volumes"><a href="#H-DenseUNet-Hybrid-Densely-Connected-UNet-for-Liver-and-Tumor-Segmentation-from-CT-Volumes" class="headerlink" title="H-DenseUNet: Hybrid Densely Connected UNet for Liver and Tumor Segmentation from CT Volumes"></a>H-DenseUNet: Hybrid Densely Connected UNet for Liver and Tumor Segmentation from CT Volumes</h3><h4 id="简介-1"><a href="#简介-1" class="headerlink" title="简介"></a>简介</h4><p>2018 IEEE TRANSACTIONS ON MEDICAL IMAGING 的论文，<a href="https://ieeexplore.ieee.org/abstract/document/8379359" target="_blank" rel="noopener">地址在此</a>。</p>
-<p>深度学习的模型由于其高计算开销和高内存消耗，在大数据量的3D图像，尤其是医学影像上应用比较困难。在这个论文中，他们实现提出一个叫做 H-DenseUNet 的深度网络，实现肺部肿瘤的分割（不仅仅是分割，而且更关注肿瘤区域哟）。论文说它们的具体难点有：</p>
+<p>深度学习的模型由于其高计算开销和高内存消耗，在大数据量的3D图像，尤其是医学影像上应用比较困难。在这个论文中，他们实现提出一个叫做 H-DenseUNet 的深度网络，实现肝部肝瘤的分割（不仅仅是分割，而且更关注肿瘤区域哟）。论文说它们的具体难点有：</p>
 <ul>
 <li>肿瘤大小，数目，位置，形状因人而异。</li>
 <li>病变区域不一定有明显界限，限制基于边缘的分割的方法。</li>
@@ -370,10 +378,8 @@
 <p>不会就这样算是3D的特征了吧？看看 B 部分怎么说吧。</p>
 <h5 id="B-H-DenseUNet-for-Hybrid-Feature-Exploration"><a href="#B-H-DenseUNet-for-Hybrid-Feature-Exploration" class="headerlink" title="B. H-DenseUNet for Hybrid Feature Exploration"></a>B. H-DenseUNet for Hybrid Feature Exploration</h5><p>论文说：3D DenseUNet 直接处理原图像有着巨大的 GPU 计算开销，内存的开销，和网络的深度，你不值得拥有。咱们这个 H-DenseUNe 就是同时处理的片内和片见特征的。怎么处理呢？先给你看一个公式：<br>$$<br>\begin{equation}<br>X_{2d}’ = F^{-1}(X_{2d}),X_{2d}’ \in R^{12n\times 224 \times 224 \times 64}\\<br>y_{2d}’ = F^{-1}(y_{2d}),y_{2d}’ \in R^{12n\times 224 \times 224 \times 3}<br>\end{equation}<br>$$<br>敲黑板。。他说 2D 要和 3D 混合就需要维度上对齐，如所以要如此这般转换一下。然后 3D DenseUNet 可以直接从这里的 $y_{2d}’$ 和原始体$I$ 的串联中“蒸馏”（distill）出 3D 的特征。不是说计算量大么为什么还要加上$I$一起训练？论文说，有了 3D 特征的指导，找到全局最优点就更快了。emmmmmm 好像是有那么点道理哈。。。看公式：<br>$$<br>\begin{equation}<br>X_{3d} = f_{3d}(I,y_{2d}’;\theta_{3d})\\<br>Z=X_{3d}+X_{2d}’<br>\end{equation}<br>$$<br>$Z$ 就是混合特征。</p>
 <h5 id="C-Loss-Function-Training-and-Inference-Schemes"><a href="#C-Loss-Function-Training-and-Inference-Schemes" class="headerlink" title="C. Loss Function, Training and Inference Schemes"></a>C. Loss Function, Training and Inference Schemes</h5><p>损失函数用的是交叉熵函数，剩余公式列一下：<br>$$<br>\begin{equation}<br>H = f_{HFF}(Z; \theta_{HFF})\\<br>y_{H}’= f_{HFFcls}(H; \theta_{HFFcls})\\<br>\end{equation}<br>$$</p>
-<p>$L(y,y’)=-\frac{1}{N} \sum^{N}_{i=1}s$</p>
-<p>$s=(\sum_{c=1}^3ss)$</p>
-<p>$ss=w_{i}^{c} y^{c}_{i} log y`_i^c$</p>
-<p>非要这么写，垃圾公式渲染器。。。</p>
+<p>$L(y,y’)=-\frac{1}{N} sum^N_{i=1}{(sum^3_{c=1}w_{i}^{c} y^{c}_{i} log y`_i^c)}$</p>
+<p>双累加非要这么写才能渲染，垃圾公式渲染器。。。</p>
 <h5 id="RTFSC"><a href="#RTFSC" class="headerlink" title="RTFSC"></a>RTFSC</h5><p><a href="https://github.com/xmengli999/H-DenseUNet" target="_blank" rel="noopener">代码地址</a></p>
 <p>首页头像有惊喜，然鹅这代码比 3D 点云分割的代码长到不知道那里去了。。。</p>
 <h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>提取多个 2D 信息来指导 3D 的训练是个好想法，值得学习和实践。然而只是解决了计算时间的问题，计算感觉是不是空间反而更大了。</p>
@@ -457,6 +463,10 @@
 
             <div class="post-nav-prev post-nav-item">
               
+                <a href="/2019/09/30/CFCN/" rel="prev" title="【论文整理】CFCN医学影像分割">
+                  【论文整理】CFCN医学影像分割 <i class="fa fa-chevron-right"></i>
+                </a>
+              
             </div>
           </div>
         
@@ -526,7 +536,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-count">7</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -552,7 +562,7 @@
             <a href="/tags/">
           
         
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">tags</span>
         </a>
       </div>

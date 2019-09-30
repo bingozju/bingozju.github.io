@@ -76,19 +76,19 @@
 })();
 </script>
 
-  <meta name="description" content="求最多有多少个点在同一条直线上题目 Given n points on a 2D plane, find the maximum number of points that lie on the same straight line. Example12345678910Input: [[1,1],[2,2],[3,3]]Output: 3Explanation:^||        o|">
-<meta name="keywords" content="动态规划">
+  <meta name="description" content="Automatic Liver and Tumor Segmentation of CT and MRI Volumes Using Cascaded Fully Convolutional Neural Networks简介2016年MICCAI的论文，论文在此文章主要讲了使用 CFCN（级联的全连接神经网络 + 条件随机场） 方法做肝部CT病变区域和腹部核磁共振图像的分割，实现大规模医学试验和">
+<meta name="keywords" content="深度学习,医学影像分割,Unet,CRF">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【算法合集】几何">
-<meta property="og:url" content="https://bingozju.github.io/2019/09/23/geometric/index.html">
+<meta property="og:title" content="【论文整理】CFCN医学影像分割">
+<meta property="og:url" content="https://bingozju.github.io/2019/09/30/CFCN/index.html">
 <meta property="og:site_name" content="茶杯子的Blog">
-<meta property="og:description" content="求最多有多少个点在同一条直线上题目 Given n points on a 2D plane, find the maximum number of points that lie on the same straight line. Example12345678910Input: [[1,1],[2,2],[3,3]]Output: 3Explanation:^||        o|">
+<meta property="og:description" content="Automatic Liver and Tumor Segmentation of CT and MRI Volumes Using Cascaded Fully Convolutional Neural Networks简介2016年MICCAI的论文，论文在此文章主要讲了使用 CFCN（级联的全连接神经网络 + 条件随机场） 方法做肝部CT病变区域和腹部核磁共振图像的分割，实现大规模医学试验和">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-24T12:09:38.708Z">
+<meta property="og:updated_time" content="2019-09-30T09:26:45.725Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="【算法合集】几何">
-<meta name="twitter:description" content="求最多有多少个点在同一条直线上题目 Given n points on a 2D plane, find the maximum number of points that lie on the same straight line. Example12345678910Input: [[1,1],[2,2],[3,3]]Output: 3Explanation:^||        o|">
-  <link rel="canonical" href="https://bingozju.github.io/2019/09/23/geometric/">
+<meta name="twitter:title" content="【论文整理】CFCN医学影像分割">
+<meta name="twitter:description" content="Automatic Liver and Tumor Segmentation of CT and MRI Volumes Using Cascaded Fully Convolutional Neural Networks简介2016年MICCAI的论文，论文在此文章主要讲了使用 CFCN（级联的全连接神经网络 + 条件随机场） 方法做肝部CT病变区域和腹部核磁共振图像的分割，实现大规模医学试验和">
+  <link rel="canonical" href="https://bingozju.github.io/2019/09/30/CFCN/">
 
 
 <script id="page-configurations">
@@ -102,7 +102,7 @@
   };
 </script>
 
-  <title>【算法合集】几何 | 茶杯子的Blog</title>
+  <title>【论文整理】CFCN医学影像分割 | 茶杯子的Blog</title>
   
 
 
@@ -269,7 +269,7 @@
   
   
   <div class="post-block post">
-    <link itemprop="mainEntityOfPage" href="https://bingozju.github.io/2019/09/23/geometric/">
+    <link itemprop="mainEntityOfPage" href="https://bingozju.github.io/2019/09/30/CFCN/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Bingo">
@@ -281,7 +281,7 @@
       <meta itemprop="name" content="茶杯子的Blog">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">【算法合集】几何
+        <h1 class="post-title" itemprop="name headline">【论文整理】CFCN医学影像分割
 
           
         </h1>
@@ -297,20 +297,8 @@
                 
               
 
-              <time title="Created: 2019-09-23 09:36:49" itemprop="dateCreated datePublished" datetime="2019-09-23T09:36:49+08:00">2019-09-23</time>
+              <time title="Created: 2019-09-30 17:26:45" itemprop="dateCreated datePublished" datetime="2019-09-30T17:26:45+08:00">2019-09-30</time>
             </span>
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-09-24 20:09:38" itemprop="dateModified" datetime="2019-09-24T20:09:38+08:00">2019-09-24</time>
-              </span>
-            
           
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -318,7 +306,7 @@
               </span>
               <span class="post-meta-item-text">In</span>
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/算法设计/" itemprop="url" rel="index"><span itemprop="name">算法设计</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/论文笔记/" itemprop="url" rel="index"><span itemprop="name">论文笔记</span></a></span>
 
                 
                 
@@ -345,19 +333,31 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="求最多有多少个点在同一条直线上"><a href="#求最多有多少个点在同一条直线上" class="headerlink" title="求最多有多少个点在同一条直线上"></a>求最多有多少个点在同一条直线上</h3><h4 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h4><blockquote>
-<p>Given <em>n</em> points on a 2D plane, find the maximum number of points that lie on the same straight line.</p>
-</blockquote><h4 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Input: [[1,1],[2,2],[3,3]]</span><br><span class="line">Output: 3</span><br><span class="line">Explanation:</span><br><span class="line">^</span><br><span class="line">|</span><br><span class="line">|        o</span><br><span class="line">|     o</span><br><span class="line">|  o  </span><br><span class="line">+-------------&gt;</span><br><span class="line">0  1  2  3  4</span><br></pre></td></tr></table></figure><a id="more"></a>
+        <h3 id="Automatic-Liver-and-Tumor-Segmentation-of-CT-and-MRI-Volumes-Using-Cascaded-Fully-Convolutional-Neural-Networks"><a href="#Automatic-Liver-and-Tumor-Segmentation-of-CT-and-MRI-Volumes-Using-Cascaded-Fully-Convolutional-Neural-Networks" class="headerlink" title="Automatic Liver and Tumor Segmentation of CT and MRI Volumes Using Cascaded Fully Convolutional Neural Networks"></a>Automatic Liver and Tumor Segmentation of CT and MRI Volumes Using Cascaded Fully Convolutional Neural Networks</h3><h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>2016年MICCAI的论文，<a href="https://link.springer.com/chapter/10.1007/978-3-319-46723-8_48" target="_blank" rel="noopener">论文在此</a></p><p>文章主要讲了使用 CFCN（级联的全连接神经网络 + 条件随机场） 方法做肝部CT病变区域和腹部核磁共振图像的分割，实现大规模医学试验和定量图像分析的分割。CFCN 主要是两层 FCN 网络的串联，第一层用来分割一个基本的 ROI， 第二层用来分割病变区域（条件随机场在下面说）。模型可扩展性上，他们在腹部的数据上训练取得的结果应用在肝部CT图像也有超过94%的 Dice scores 评分，也在 3DIRCAD 数据集上验证了对MRI肺部病变分割的鲁棒性。</p><a id="more"></a>
 
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Input: [[1,1],[3,2],[5,3],[4,1],[2,3],[1,4]]</span><br><span class="line">Output: 4</span><br><span class="line">Explanation:</span><br><span class="line">^</span><br><span class="line">|</span><br><span class="line">|  o</span><br><span class="line">|     o        o</span><br><span class="line">|        o</span><br><span class="line">|  o        o</span><br><span class="line">+-------------------&gt;</span><br><span class="line">0  1  2  3  4  5  6</span><br></pre></td></tr></table></figure>
-
-<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>计算多少个点在同一条直线上，可以转化为，一个向量上能经过多少个点，将向量移到坐标原点，问题又变成了多少个点有相同的斜率。所以现在思路就很明显了，在一个循环中分别将每个点作为坐标原点，然后在循环体内计算其他点与他的斜率，用动态规划来更新最大的点数:<br>$$<br>OPT[i] = MAX(points[i], OPT[i - 1])<br>$$</p>
-<p>这里需要注意的是分母为零的情况，我的算法中处理为一个很小的小数（这里可能不够优雅，有非常小的概率会导致算法出错，可以考虑单独计数。但是我认为就算真的有这么一个点，那他和Y轴也是非常接近的，一般工程上也认为它等同于Y轴了）</p>
-<p>这里有同学可能会想到GCD的方法，事实上对每两个点求GCD是有重复的信息计算的。而直接作差（即假定坐标原点）就可以免去这些额外的计算。</p>
-<p>最后结果是：runtime 8 ms 95.15%, memory: 9.6 MB, 71.43%</p>
-<h4 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">maxPoints</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; points)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">int</span> ps = points.size();</span><br><span class="line">		<span class="keyword">if</span> (ps == <span class="number">0</span> || ps == <span class="number">1</span>)<span class="keyword">return</span> ps;</span><br><span class="line">		<span class="keyword">int</span> res_max = <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; ps; i++) &#123;</span><br><span class="line">			<span class="keyword">int</span> temp = <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">int</span> res_temp = <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">int</span> res = <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; ps; j++) &#123;</span><br><span class="line">				<span class="keyword">if</span> (points[j][<span class="number">1</span>] == points[i][<span class="number">1</span>] &amp;&amp; points[j][<span class="number">0</span>] == points[i][<span class="number">0</span>]) &#123;</span><br><span class="line">					temp++;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="built_in">vector</span>&lt;<span class="keyword">double</span>&gt; ks;</span><br><span class="line">			ks.resize(points.size() - temp + <span class="number">1</span>);</span><br><span class="line">			<span class="keyword">if</span> (ks.size() == <span class="number">0</span>)<span class="keyword">return</span> ps;</span><br><span class="line"></span><br><span class="line">			res = temp;</span><br><span class="line">			res_temp = temp;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>, k = <span class="number">0</span>; j &lt; points.size(); j++) &#123;</span><br><span class="line">				<span class="keyword">if</span> (points[j][<span class="number">0</span>] == points[i][<span class="number">0</span>] &amp;&amp; points[j][<span class="number">1</span>] == points[i][<span class="number">1</span>])</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">				<span class="keyword">if</span> (points[j][<span class="number">1</span>] == points[i][<span class="number">1</span>])ks[k++] -= <span class="number">1e-25</span>;</span><br><span class="line">				<span class="keyword">else</span> ks[k++] =  <span class="number">1.0</span> * (points[j][<span class="number">0</span>] - points[i][<span class="number">0</span>]) / (points[j][<span class="number">1</span>] - points[i][<span class="number">1</span>]);</span><br><span class="line">			&#125;</span><br><span class="line">			sort(ks.begin(), ks.end());</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; ks.size(); j++) &#123;</span><br><span class="line">				<span class="keyword">double</span> k_temp = ks[j - <span class="number">1</span>];</span><br><span class="line">				<span class="keyword">if</span> (ks[j] == k_temp) &#123;</span><br><span class="line">					res_temp++;</span><br><span class="line">					res = max(res, res_temp);</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">else</span> </span><br><span class="line">					res_temp = temp;</span><br><span class="line">			&#125;</span><br><span class="line">			res_max = max(res, res_max);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> res_max;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
+<h4 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h4><p>论文说它的贡献有三：</p>
+<ul>
+<li>首先，他们首次在肝脏的CT量上训练并应用了完全卷积的CNN，证明了其对挑战性肝病灶分割的适应性。</li>
+<li>其次，他们建议在CT切片上使用级联的完全卷积神经网络（CFCN），该切片将肝脏和病变顺序地分割，从而导致分割质量显着提高，如公开挑战数据集所示。</li>
+<li>第三，他们通过实验证明了他们的方法对不同模态和各种现实生活数据集的概括性和可扩展性，包括新颖的扩散加权MRI数据集和大型的以多中心为中心的CT数据集。</li>
+</ul>
+<h5 id="概况"><a href="#概况" class="headerlink" title="概况"></a>概况</h5><p>主要是三步：</p>
+<ul>
+<li>准备数据。</li>
+<li>两个级联的 FCN ，第一个做肺部区域分割，第二个做病变区域分割。</li>
+<li>用一个密度 3D 条件随机场来计算CFCN的输出得到最后的结果。这一步也是它之所以说自己能处理 3D 数据的关键。</li>
+</ul>
+<h5 id="数据准备"><a href="#数据准备" class="headerlink" title="数据准备"></a>数据准备</h5><p>论文讲了 CT 数据的处理，先将其亨氏单位值取在 $[-100,400]$ 的范围，然后使用直方图均衡增强了对比度（这一步我认为不是很有必要，直方图均衡会损失细节）。为了增强数据集，对训练集数据做了弹性变形，旋转，平移，加入高斯噪声等骚操作。</p>
+<h5 id="CFCN"><a href="#CFCN" class="headerlink" title="CFCN"></a>CFCN</h5><p>这里讲了两种 FCN 的选择，一个是 用 FCN层 改造 AlexNet 末层的 FCN ，一个是 U-Net。大概是大家都是那个年代的论文，就都做了些实验，对比了两者的优劣，所以两个两个网络都说了一下。咱们已经是现代人了，结果是 U-Net 胜出这个很好猜到。论文里赞扬了 U-Net 利用先前提取的特征结合FCN做分类的思想，也把比 AlexNet 改造网络效果更好的原因归功于此。 </p>
+<h5 id="类别平衡"><a href="#类别平衡" class="headerlink" title="类别平衡"></a>类别平衡</h5><p>由于病变区域的分割问题中，病变区域是很小的区域，在所有图像数据里占比很小，所以分割的训练很难训练。这里论文的交叉熵函数设为：<br>$$<br>L = -\frac{1}{n}\sum^N_{i=1}w_i^{class}[P’_ilogP_i + (1-P’_i)log(1-P_i)]<br>$$<br>$P_i$表示像素为“前景”的概率，$P’_i$表示真实概率，$w^{calss}_i$是附加的权重因子。$w_i^{class}=\frac{\sum_i 1-P’i_i}{\sum P’_i}$</p>
+<p>这里不是很清楚为什么$w$ 下面有个 $i$，因为累加都累加掉了。。说实话。代码里面我也没看懂哪里是$w$。。。它确实乘了个因子但是和代码表示的相差甚远的样子，更像是手动设的一个东西。</p>
+<h5 id="3D条件随机场"><a href="#3D条件随机场" class="headerlink" title="3D条件随机场"></a>3D条件随机场</h5><p>以上的级联 U-Net 只是处理的每一个切片的分割，这里要应用条件随机场把片间的信息利用起来。这里在 CRF 中将 FCN 的所有切片预测同时应用于整个体积，根据 FCN 的软预测（概率图）将最终的标签分配公式化为密集CRF中的最大后验（MAP）推论。看公式：<br>$$<br>E(x) = \sum_{i\in V}\Phi_i(x_i)+\sum_{(i,j)\in \varepsilon} \Phi_{ij}(x_i,x_j)<br>$$</p>
+<p>$$<br>\begin{equation}<br>\Phi_i(x_i) = -logP(x_i|I) \\<br>\Phi_{ij}(x_i,x_j) = \mu(x_i ,x_j)(w_{pos}exp(−\frac{|p_i−p_j|^2}{2σ^2_{pos}})+w_{bil}exp(−\frac{|p_i−p_j|^2}{2σ^2_{bil}}−\frac{|I_i −I_j |^2}{2σ^2_{int}}))<br>\end{equation}<br>$$</p>
+<p>这里 $\mu(x_i,x_j) = 1(x_i \ne x_j)$，$| p_i − p_j |$ 是体素 i 和 j 之间的空间距离，$|I_i − I_j|$| 是它们在原始图像中的强度差异。其他都是手动调节的参数。表示影响程度和范围。</p>
+<p>最后$x^* = argmin_{x\in L^N} E(x)$ </p>
+<h5 id="RTFSC"><a href="#RTFSC" class="headerlink" title="RTFSC"></a>RTFSC</h5><p><a href="https://github.com/IBBM/Cascaded-FCN" target="_blank" rel="noopener">代码在此</a></p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>16年的论文，是对 U-Net 的一个实践，两个网络的级联 + 条件随机场处理3D信息不是那么优雅简练，但是没有计算量和模型复杂度的问题。</p>
+<p>另外比较有的启发点还是在于数据的处理上，增强需要分割的病变区域的数据和最后的 Loss 函数变权。</p>
 
     </div>
 	
@@ -398,7 +398,7 @@
     <strong>Post author:  </strong>Bingo</li>
   <li class="post-copyright-link">
     <strong>Post link: </strong>
-    <a href="https://bingozju.github.io/2019/09/23/geometric/" title="【算法合集】几何">https://bingozju.github.io/2019/09/23/geometric/</a>
+    <a href="https://bingozju.github.io/2019/09/30/CFCN/" title="【论文整理】CFCN医学影像分割">https://bingozju.github.io/2019/09/30/CFCN/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-cn" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.</li>
@@ -413,7 +413,13 @@
           
           <div class="post-tags">
             
-              <a href="/tags/动态规划/" rel="tag"><i class="fa fa-tag"></i> 动态规划</a>
+              <a href="/tags/深度学习/" rel="tag"><i class="fa fa-tag"></i> 深度学习</a>
+            
+              <a href="/tags/医学影像分割/" rel="tag"><i class="fa fa-tag"></i> 医学影像分割</a>
+            
+              <a href="/tags/Unet/" rel="tag"><i class="fa fa-tag"></i> Unet</a>
+            
+              <a href="/tags/CRF/" rel="tag"><i class="fa fa-tag"></i> CRF</a>
             
           </div>
         
@@ -423,8 +429,8 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2019/09/20/find-in-sorted-array/" rel="next" title="【算法整理】有序数组的查找">
-                  <i class="fa fa-chevron-left"></i> 【算法整理】有序数组的查找
+                <a href="/2019/09/26/U-Net-Segmentation-Medical-Imaging/" rel="next" title="【论文整理】Unet医学影像分割">
+                  <i class="fa fa-chevron-left"></i> 【论文整理】Unet医学影像分割
                 </a>
               
             </div>
@@ -432,10 +438,6 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2019/09/24/3d-GNN-RGBD-semantic-segmentation/" rel="prev" title="【论文整理】图神经网络3D分割">
-                  【论文整理】图神经网络3D分割 <i class="fa fa-chevron-right"></i>
-                </a>
               
             </div>
           </div>
@@ -488,7 +490,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#求最多有多少个点在同一条直线上"><span class="nav-text">求最多有多少个点在同一条直线上</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目"><span class="nav-text">题目</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Example"><span class="nav-text">Example</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路"><span class="nav-text">思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解答"><span class="nav-text">解答</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Automatic-Liver-and-Tumor-Segmentation-of-CT-and-MRI-Volumes-Using-Cascaded-Fully-Convolutional-Neural-Networks"><span class="nav-text">Automatic Liver and Tumor Segmentation of CT and MRI Volumes Using Cascaded Fully Convolutional Neural Networks</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#简介"><span class="nav-text">简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#正文"><span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#概况"><span class="nav-text">概况</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#数据准备"><span class="nav-text">数据准备</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#CFCN"><span class="nav-text">CFCN</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#类别平衡"><span class="nav-text">类别平衡</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3D条件随机场"><span class="nav-text">3D条件随机场</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#RTFSC"><span class="nav-text">RTFSC</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-text">总结</span></a></li></ol></li></ol></div>
         
       </div>
       <!--/noindex-->
@@ -746,7 +748,7 @@
       repo: 'bingozju.github.io',
       owner: 'bingozju',
       admin: ['bingozju'],
-      id: 'f57b77e4158eb1a4d2e16f209a473da3',
+      id: 'd5b2e12df88e2febbd693ddd4a18074c',
         language: window.navigator.language || window.navigator.userLanguage,
       
       distractionFreeMode: 'true'
